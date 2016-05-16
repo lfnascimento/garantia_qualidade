@@ -1,0 +1,13 @@
+.nested-fields
+  = f.label :descricao
+  = f.text_field :descricao
+
+  = f.label :produto
+  = f.check_box :produto
+
+  = f.label :processo
+  = f.check_box :processo
+
+  = f.label :ordem
+  = f.number_field :ordem
+  = link_to_remove_association "-", f

@@ -1,0 +1,18 @@
+%p#notice
+  = notice
+
+%p
+  %strong Identificação:
+  = @checklist.identificacao
+
+%p
+  %strong Fase:
+  = @checklist.fase
+
+%p
+  - @itens.each do |item|
+    = item.descricao
+
+= link_to 'Edit', edit_checklist_path(@checklist) 
+|
+= link_to 'Back', checklists_path
