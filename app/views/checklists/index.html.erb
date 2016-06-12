@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Checklists</h1>
+<h1>Checklists</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Identificacao</th>
+      <th>Identificação</th>
       <th>Fase</th>
       <th colspan="3"></th>
     </tr>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= checklist.identificacao %></td>
         <td><%= checklist.fase %></td>
-        <td><%= link_to 'Show', checklist %></td>
-        <td><%= link_to 'Edit', edit_checklist_path(checklist) %></td>
-        <td><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Visualizar', checklist %></td>
+        <td><%= link_to 'Editar', edit_checklist_path(checklist) %></td>
+        <td><%= link_to 'Excluir', checklist, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Checklist', new_checklist_path %>
+<%= link_to 'Definir Checklist', new_checklist_path %>

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem "spork-rails", "~> 4.0.0"
 
+gem 'devise'
 
 gem 'formtastic', '~> 3.0'
 
