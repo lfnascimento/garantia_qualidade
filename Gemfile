@@ -52,6 +52,7 @@ group :development, :test do
   gem 'capybara'
   gem "factory_girl_rails", "~> 4.0"
   gem 'sqlite3'
+  gem 'mysql2'
 end
 
 group :development do
