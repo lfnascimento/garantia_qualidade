@@ -22,10 +22,10 @@
   <div id="item">
     <%= f.semantic_fields_for :items do |item|%>
       <%= render 'item_fields', f: item %>
-      <%= link_to_add_association '+', f, :items %>
+      <%= link_to_add_association '+', f, :items, class: "btn-xs btn-success" %>
     <% end %>
   </div>
   <div class="actions">
-  <%= f.submit "Definir" %>
+  <%= f.submit "Definir", class: "btn btn-primary" %>
   </div>
 <% end %>
