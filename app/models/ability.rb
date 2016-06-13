@@ -10,6 +10,7 @@ class Ability
       else
         can :read, :all
       end
+      can :aplicar, Checklist if user.qa?
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

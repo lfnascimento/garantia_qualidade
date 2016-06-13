@@ -1,0 +1,19 @@
+%p#notice
+  = notice
+
+%h1 Aplicação de Checklist
+
+%p
+  %strong Identificação:
+  = @checklist.identificacao
+
+%p
+  %strong Fase:
+  = @checklist.fase
+
+= form_tag do
+  = label_tag(:prazo, "Prazo")
+  = number_field(:prazo, in: 1..30)
+  = submit_tag("Aplicar", class: "btn btn-primary")
+
+= link_to 'Voltar', checklists_path

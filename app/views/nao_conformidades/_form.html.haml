@@ -1,0 +1,10 @@
+= semantic_form_for @nao_conformidade do |f|
+  = f.inputs do
+    = f.input :descricao
+    = f.input :origem
+    = f.input :prazo
+    = f.input :checklist
+    = f.input :item
+
+  = f.actions do
+    = f.action :submit, :as => :input

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Descricao:
+  = @nao_conformidade.descricao
+%p
+  %b Origem:
+  = @nao_conformidade.origem
+%p
+  %b Prazo:
+  = @nao_conformidade.prazo
+%p
+  %b Checklist:
+  = @nao_conformidade.checklist
+%p
+  %b Item:
+  = @nao_conformidade.item
+
+= link_to 'Edit', edit_nao_conformidade_path(@nao_conformidade)
+\|
+= link_to 'Back', nao_conformidades_path

@@ -32,7 +32,9 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href=<%= checklists_path %>>Checklists</a></li>
-          <li><a href="#about">Sobre</a></li>
+          <% if current_user.qa? %>
+              <li><a href="#">Não Conformidades</a></li>
+          <% end rescue '' %>
           <% if user_signed_in? %>
               <li>
                   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        

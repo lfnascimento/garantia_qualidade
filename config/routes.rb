@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  resources :nao_conformidades
   devise_for :users
-  resources :checklists
+  resources :checklists do
+    member do
+      get 'aplicar'
+    end
+  end
   root "checklists#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
