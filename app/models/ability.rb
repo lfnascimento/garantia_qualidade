@@ -10,8 +10,11 @@ class Ability
       else
         can :read, :all
       end
-      can :aplicar, Checklist if user.qa?
-    #
+      if user.qa?
+        can :aplicar, Checklist
+        can :manage, NaoConformidade
+      end
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
