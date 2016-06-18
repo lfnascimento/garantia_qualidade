@@ -33,7 +33,7 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href=<%= checklists_path %>>Checklists</a></li>
           <% if current_user.qa? %>
-              <li><a href="#">Não Conformidades</a></li>
+              <li><a href=<%= nao_conformidades_path %>>Não Conformidades</a></li>
           <% end rescue '' %>
           <% if user_signed_in? %>
               <li>

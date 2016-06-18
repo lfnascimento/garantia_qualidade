@@ -6,7 +6,10 @@ Rails.application.routes.draw do
       get 'aplicar'
     end
   end
-  root "checklists#index"
+  get 'checklists/:id/get_item_options', :to => 'checklists#get_checklist_items'
+  root 'checklists#index'
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

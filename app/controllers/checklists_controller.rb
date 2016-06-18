@@ -66,6 +66,12 @@ class ChecklistsController < ApplicationController
     end
   end
 
+  def get_checklist_items
+    checklist = Checklist.find_by(:id => params[:id])
+    @item_options = checklist.items.sort_by{|item| item.name}
+    render :partial => 'item_options', :layout => nil
+  end
+
   def aplicar
     @checklist = Checklist.find(params[:id])
   end

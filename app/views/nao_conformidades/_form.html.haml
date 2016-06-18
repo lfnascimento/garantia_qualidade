@@ -1,10 +1,10 @@
 = semantic_form_for @nao_conformidade do |f|
   = f.inputs do
-    = f.input :descricao
-    = f.input :origem
+    = f.input :descricao, size: "60x12"
+    = f.input :origem, size: "12x12"
     = f.input :prazo
-    = f.input :checklist
-    = f.input :item
-
+    = f.collection_select :checklist, @checklists, :id, :identificacao
+    = #f.collection_select :item, Item.all, :id, :descricao
+    = select_tag(:item_id, '')
   = f.actions do
     = f.action :submit, :as => :input

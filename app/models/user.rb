@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   def qa?
     self.papel == "QA"
   end
+
 end

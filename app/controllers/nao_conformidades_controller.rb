@@ -15,6 +15,7 @@ class NaoConformidadesController < ApplicationController
   # GET /nao_conformidades/new
   def new
     @nao_conformidade = NaoConformidade.new
+    @checklists = Checklist.all
   end
 
   # GET /nao_conformidades/1/edit
