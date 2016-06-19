@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Nome:
+  = @projeto.nome
+%p
+  %b Desc:
+  = @projeto.desc
+%p
+  %b Responsavel:
+  = @projeto.responsavel
+
+= link_to 'Edit', edit_projeto_path(@projeto)
+\|
+= link_to 'Back', projetos_path

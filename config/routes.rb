@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
+  resources :projetos
   resources :nao_conformidades
   devise_for :users
   resources :checklists do
     member do
       get 'aplicar'
+      get 'get_checklist_items'
     end
   end
-  get 'checklists/:id/get_item_options', :to => 'checklists#get_checklist_items'
+  #get 'checklists/:id/get_checklist_items', :to => 'checklists#get_checklist_items'
+
   root 'checklists#index'
   
 

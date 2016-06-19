@@ -1,8 +1,6 @@
 class ChecklistsController < ApplicationController
-  load_and_authorize_resource
-  #before_action :set_checklist, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-   
+  load_and_authorize_resource
   # GET /checklists
   # GET /checklists.json
   def index
@@ -68,8 +66,13 @@ class ChecklistsController < ApplicationController
 
   def get_checklist_items
     checklist = Checklist.find_by(:id => params[:id])
+    p checklist
     @item_options = checklist.items.sort_by{|item| item.name}
-    render :partial => 'item_options', :layout => nil
+    p @item_options
+    #render :partial => 'item_options', :layout => nil
+    #respond_to |format|
+      #format.js
+
   end
 
   def aplicar

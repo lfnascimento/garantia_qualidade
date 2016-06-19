@@ -1,0 +1,25 @@
+%h1 Listing projetos
+
+%table
+  %thead
+    %tr
+      %th Nome
+      %th Desc
+      %th Responsavel
+      %th
+      %th
+      %th
+
+  %tbody
+    - @projetos.each do |projeto|
+      %tr
+        %td= projeto.nome
+        %td= projeto.desc
+        %td= projeto.responsavel
+        %td= link_to 'Show', projeto
+        %td= link_to 'Edit', edit_projeto_path(projeto)
+        %td= link_to 'Destroy', projeto, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Projeto', new_projeto_path

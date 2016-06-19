@@ -15,6 +15,10 @@ class Ability
         can :manage, NaoConformidade
       end
 
+      if user.admin?
+        can :manage, Projeto
+      end
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

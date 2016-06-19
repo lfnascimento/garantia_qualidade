@@ -5,10 +5,14 @@ $ ->
   $("#nao_conformidade_checklist").change (e) ->
     e.preventDefault()
     checklist = $("#nao_conformidade_checklist").val()
+    console.log(checklist)
     url = "/checklists/#{checklist}/get_checklist_items"
-    $.get url, (data) ->
-      $("#item_id").html data
-
+    console.log(url)
+    #$.get url, (data) ->
+      #console.log(data)
+      #$("#item_id").html data
+    $.ajax(url: url).done (html) ->
+      $("#item_id").html html
 
 #(function(){
 #var city_id = $(this).val();
