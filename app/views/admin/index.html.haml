@@ -1,0 +1,7 @@
+%table
+  %thead nome
+  %thead papel
+  - @users.each do |user|
+    %tr
+      %td= user.email
+      %td= select_tag user.papel, options_for_select([['SEPG', 'SEPG'],['QA', 'QA']], user.papel)

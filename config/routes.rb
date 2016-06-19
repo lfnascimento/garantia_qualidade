@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
   #get 'checklists/:id/get_checklist_items', :to => 'checklists#get_checklist_items'
 
+  get 'admin/', :to => 'admin#index'
+
   root 'checklists#index'
   
 
