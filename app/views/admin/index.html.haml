@@ -4,4 +4,4 @@
   - @users.each do |user|
     %tr
       %td= user.email
-      %td= select_tag user.papel, options_for_select([['SEPG', 'SEPG'],['QA', 'QA']], user.papel)
+      %td= select_tag user.papel, options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel)

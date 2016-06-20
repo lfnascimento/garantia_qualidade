@@ -63,6 +63,18 @@ class NaoConformidadesController < ApplicationController
     end
   end
 
+  def get_checklist_items
+    if !params[:checklist_id].blank?
+      checklist = Checklist.find(params[:checklist_id])
+      @item_options = checklist.items.sort_by{ |item| item.descricao }
+      @item_options = @item_options.map { |item| [item.descricao, item.id] }
+    else
+      @item_options = [[]]
+    end
+
+    render :partial => 'item_options', :layout => nil
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nao_conformidade

@@ -1,6 +1,7 @@
 class ChecklistsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
+  before_action :set_checklist, only: [:show, :edit, :update, :destroy]
   # GET /checklists
   # GET /checklists.json
   def index
@@ -64,17 +65,6 @@ class ChecklistsController < ApplicationController
     end
   end
 
-  def get_checklist_items
-    checklist = Checklist.find_by(:id => params[:id])
-    p checklist
-    @item_options = checklist.items.sort_by{|item| item.name}
-    p @item_options
-    #render :partial => 'item_options', :layout => nil
-    #respond_to |format|
-      #format.js
-
-  end
-
   def aplicar
     @checklist = Checklist.find(params[:id])
   end
@@ -87,7 +77,7 @@ class ChecklistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def checklist_params
-      params.require(:checklist).permit(:identificacao, :fase, 
+      params.require(:checklist).permit(:identificacao, :fase,
                                         items_attributes: [:descricao, :produto, :processo, :ordem])
     end
 end

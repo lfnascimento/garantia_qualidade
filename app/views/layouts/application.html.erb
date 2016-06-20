@@ -35,6 +35,10 @@
           <% if current_user.qa? %>
               <li><a href=<%= nao_conformidades_path %>>Não Conformidades</a></li>
           <% end rescue '' %>
+          <% if current_user.admin? %>
+              <li><a href=<%= projetos_path %>>Projetos</a></li>
+              <li><a href=<%= admin_path %>>Papéis</a></li>
+          <% end rescue '' %>
           <% if user_signed_in? %>
               <li>
                   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        

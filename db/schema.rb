@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 20160618233350) do
 
   add_index "items", ["checklist_id"], name: "index_items_on_checklist_id", using: :btree
 
+  create_table "nao_confomidades", force: :cascade do |t|
+    t.integer  "checklist_id", limit: 4
+    t.integer  "item_id",      limit: 4
+    t.text     "dewcricao",    limit: 65535
+    t.text     "origem",       limit: 65535
+    t.integer  "prazo",        limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "nao_confomidades", ["checklist_id"], name: "index_nao_confomidades_on_checklist_id", using: :btree
+  add_index "nao_confomidades", ["item_id"], name: "index_nao_confomidades_on_item_id", using: :btree
+
   create_table "nao_conformidades", force: :cascade do |t|
     t.integer  "checklist_id", limit: 4
     t.integer  "item_id",      limit: 4
@@ -77,6 +90,8 @@ ActiveRecord::Schema.define(version: 20160618233350) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "nao_confomidades", "checklists"
+  add_foreign_key "nao_confomidades", "items"
   add_foreign_key "nao_conformidades", "checklists"
   add_foreign_key "nao_conformidades", "items"
 end

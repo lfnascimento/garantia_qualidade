@@ -5,12 +5,11 @@ Rails.application.routes.draw do
   resources :checklists do
     member do
       get 'aplicar'
-      get 'get_checklist_items'
     end
   end
-  #get 'checklists/:id/get_checklist_items', :to => 'checklists#get_checklist_items'
 
   get 'admin/', :to => 'admin#index'
+  get 'get_checklist_items' => 'nao_conformidades#get_checklist_items'
 
   root 'checklists#index'
   
