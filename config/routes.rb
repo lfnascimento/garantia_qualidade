@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   get 'admin/', :to => 'admin#index'
-  get 'get_checklist_items' => 'nao_conformidades#get_checklist_items'
+  get 'get_checklist_itens' => 'nao_conformidades#get_checklist_itens'
 
   root 'checklists#index'
   

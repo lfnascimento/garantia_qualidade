@@ -63,10 +63,10 @@ class NaoConformidadesController < ApplicationController
     end
   end
 
-  def get_checklist_items
+  def get_checklist_itens
     if !params[:checklist_id].blank?
       checklist = Checklist.find(params[:checklist_id])
-      @item_options = checklist.items.sort_by{ |item| item.descricao }
+      @item_options = checklist.itens.sort_by{ |item| item.descricao }
       @item_options = @item_options.map { |item| [item.descricao, item.id] }
     else
       @item_options = [[]]

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160618233350) do
+ActiveRecord::Schema.define(version: 20160621013959) do
+
+  create_table "aplicacoes", force: :cascade do |t|
+    t.integer  "projeto_id",     limit: 4
+    t.integer  "checklist_id",   limit: 4
+    t.datetime "data_aplicacao"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "aplicacoes", ["checklist_id"], name: "index_aplicacoes_on_checklist_id", using: :btree
+  add_index "aplicacoes", ["projeto_id"], name: "index_aplicacoes_on_projeto_id", using: :btree
 
   create_table "checklists", force: :cascade do |t|
     t.string   "identificacao", limit: 255
@@ -20,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160618233350) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "itens", force: :cascade do |t|
     t.text     "descricao",    limit: 65535
     t.boolean  "produto"
     t.boolean  "processo"
@@ -30,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160618233350) do
     t.integer  "ordem",        limit: 4
   end
 
-  add_index "items", ["checklist_id"], name: "index_items_on_checklist_id", using: :btree
+  add_index "itens", ["checklist_id"], name: "index_itens_on_checklist_id", using: :btree
 
   create_table "nao_confomidades", force: :cascade do |t|
     t.integer  "checklist_id", limit: 4
@@ -91,7 +102,7 @@ ActiveRecord::Schema.define(version: 20160618233350) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "nao_confomidades", "checklists"
-  add_foreign_key "nao_confomidades", "items"
+  add_foreign_key "nao_confomidades", "itens"
   add_foreign_key "nao_conformidades", "checklists"
-  add_foreign_key "nao_conformidades", "items"
+  add_foreign_key "nao_conformidades", "itens"
 end
