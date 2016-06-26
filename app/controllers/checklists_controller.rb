@@ -12,13 +12,13 @@ class ChecklistsController < ApplicationController
   # GET /checklists/1.json
   def show
     @checklist = Checklist.find(params[:id])
-    @itens = @checklist.items
+    @itens = @checklist.itens
   end
 
   # GET /checklists/new
   def new
     @checklist = Checklist.new
-    @checklist.items.build 
+    @checklist.itens.build
   end
 
   # GET /checklists/1/edit
@@ -65,8 +65,9 @@ class ChecklistsController < ApplicationController
     end
   end
 
-  def aplicar
+  def aplicacao
     @checklist = Checklist.find(params[:id])
+    @aplicacao = Aplicacao.new
   end
 
   private
@@ -78,6 +79,6 @@ class ChecklistsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def checklist_params
       params.require(:checklist).permit(:identificacao, :fase,
-                                        items_attributes: [:descricao, :produto, :processo, :ordem])
+                                        itens_attributes: [:descricao, :produto, :processo, :ordem])
     end
 end

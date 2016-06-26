@@ -1,6 +1,6 @@
 <%= semantic_form_for(@checklist) do |f| %>
   <% if @checklist.errors.any? %>
-    <div id="error_explanation"
+    <div id="error_explanation">
       <h2><%= pluralize(@checklist.errors.count, "error") %> prohibited this checklist from being saved:</h2>
 
       <ul>

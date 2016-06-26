@@ -1,0 +1,23 @@
+%p#notice
+  = notice
+
+%h1 Aplicação de Checklist
+
+%p
+  %strong Identificação:
+  = @checklist.identificacao
+
+%p
+  %strong Fase:
+  = @checklist.fase
+
+= semantic_form_for(@aplicacao) do |f|
+  = f.inputs do
+    = f.input :projeto, as: :select, :collection => Projeto.all
+    = f.input :checklist_id, as: :hidden, :input_html => { :value => params[:id] }
+    = #f.collection_select :projeto, Projeto.all, :id, { include_blank: "Escolha o Projeto" }
+    = f.label :prazo, "Prazo"
+    = f.number_field :prazo, in: 1..30
+  = f.actions do
+    = #submit "Aplicar", class: "btn btn-primary"
+    = f.action :submit, :as => :button, class: "btn btn-primary"

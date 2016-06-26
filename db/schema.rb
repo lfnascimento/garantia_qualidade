@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621013959) do
+ActiveRecord::Schema.define(version: 20160623002757) do
 
   create_table "aplicacoes", force: :cascade do |t|
     t.integer  "projeto_id",     limit: 4
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160621013959) do
     t.datetime "data_aplicacao"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.date     "prazo"
   end
 
   add_index "aplicacoes", ["checklist_id"], name: "index_aplicacoes_on_checklist_id", using: :btree

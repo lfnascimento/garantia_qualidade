@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :checklists do
     member do
-      get 'aplicar'
+      get 'aplicacao'
     end
   end
+
+  resources :aplicacoes
 
   get 'admin/', :to => 'admin#index'
   get 'get_checklist_itens' => 'nao_conformidades#get_checklist_itens'

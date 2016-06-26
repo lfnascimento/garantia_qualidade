@@ -1,16 +1,13 @@
-%h1 Listing nao_conformidades
+%h1 Não Conformidades
 
-%table
+%table{:class => "table table-striped"}
   %thead
     %tr
-      %th Descricao
+      %th Descrição
       %th Origem
       %th Prazo
       %th Checklist
       %th Item
-      %th
-      %th
-      %th
 
   %tbody
     - @nao_conformidades.each do |nao_conformidade|
@@ -20,10 +17,10 @@
         %td= nao_conformidade.prazo
         %td= nao_conformidade.checklist
         %td= nao_conformidade.item
-        %td= link_to 'Show', nao_conformidade
-        %td= link_to 'Edit', edit_nao_conformidade_path(nao_conformidade)
-        %td= link_to 'Destroy', nao_conformidade, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Visualizar', nao_conformidade
+        %td= link_to 'Editar', edit_nao_conformidade_path(nao_conformidade)
+        %td= link_to 'Excluir', nao_conformidade, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Nao conformidade', new_nao_conformidade_path
+= link_to 'Registrar Não Conformidade', new_nao_conformidade_path

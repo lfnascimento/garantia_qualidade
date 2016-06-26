@@ -11,7 +11,7 @@ class Ability
         can :read, :all
       end
       if user.qa?
-        can :aplicar, Checklist
+        can :aplicacao, Checklist
         can :manage, NaoConformidade
       end
 

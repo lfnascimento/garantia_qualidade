@@ -4,12 +4,12 @@
   %b Nome:
   = @projeto.nome
 %p
-  %b Desc:
+  %b Descrição:
   = @projeto.desc
 %p
-  %b Responsavel:
+  %b Responsável:
   = @projeto.responsavel
 
-= link_to 'Edit', edit_projeto_path(@projeto)
+= link_to 'Editar', edit_projeto_path(@projeto)
 \|
-= link_to 'Back', projetos_path
+= link_to 'Voltar', projetos_path

@@ -1,7 +1,13 @@
-%table
-  %thead nome
-  %thead papel
+%h1 Papéis
+
+%table{:class => "table table-striped"}
+  %thead{:class => "col-md-2"}
+    nome
+  %thead{:class => "col-md-2"}
+    papel
   - @users.each do |user|
     %tr
-      %td= user.email
-      %td= select_tag user.papel, options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel)
+      %td{:class => "col-md-2"}
+        = user.email
+      %td{:class => "col-md-2"}
+        = select_tag user.papel, options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel)

@@ -1,14 +1,11 @@
-%h1 Listing projetos
+%h1 Projetos
 
 %table
   %thead
     %tr
       %th Nome
       %th Desc
-      %th Responsavel
-      %th
-      %th
-      %th
+      %th Responsável
 
   %tbody
     - @projetos.each do |projeto|
@@ -16,10 +13,10 @@
         %td= projeto.nome
         %td= projeto.desc
         %td= projeto.responsavel
-        %td= link_to 'Show', projeto
-        %td= link_to 'Edit', edit_projeto_path(projeto)
-        %td= link_to 'Destroy', projeto, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Visualizar', projeto
+        %td= link_to 'Editar', edit_projeto_path(projeto)
+        %td= link_to 'Excluir', projeto, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Projeto', new_projeto_path
+= link_to 'Novo Projeto', new_projeto_path
