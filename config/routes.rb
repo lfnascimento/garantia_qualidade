@@ -10,11 +10,12 @@ Rails.application.routes.draw do
 
   resources :aplicacoes
 
-  get 'admin/', :to => 'admin#index'
+  get 'admin/' => 'admin#index'
   get 'get_checklist_itens' => 'nao_conformidades#get_checklist_itens'
 
   root 'checklists#index'
   
+  post 'admin/trocar_papel' => 'admin#trocar_papel'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

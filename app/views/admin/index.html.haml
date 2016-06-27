@@ -1,13 +1,18 @@
 %h1 Papéis
 
-%table{:class => "table table-striped"}
-  %thead{:class => "col-md-2"}
-    nome
-  %thead{:class => "col-md-2"}
-    papel
-  - @users.each do |user|
+= form_tag '/admin/trocar_papel', remote: true, id: "form_trocar_papel"  do
+  %table{:class => "table table-striped"}
     %tr
-      %td{:class => "col-md-2"}
-        = user.email
-      %td{:class => "col-md-2"}
-        = select_tag user.papel, options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel)
+      %th Usuário
+      %th Papel
+    - @users.each do |user|
+      %tr
+        %td{:class => "col-md-2"}
+          = user.email
+        %td{:class => "col-md-2"}
+          = select_tag "papel[#{user.id}]", options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel)
+        = #hidden_field :user, :id, { value: user.id }
+
+
+
+  = submit_tag "Salvar"

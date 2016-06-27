@@ -11,6 +11,5 @@
 
 %p
   = #f.input :authors, :as => :check_boxes, :collection => Item.order("last_name ASC").where("checklist_id = ?", @aplicacao.checklist)
-  =
 
 = link_to 'Voltar', aplicacoes_path

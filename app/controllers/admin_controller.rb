@@ -5,12 +5,17 @@ class AdminController < ApplicationController
   end
 
   def trocar_papel
-    unless params[:papeis].blank?
-      params[:papeis].each do |key,value|
-        id=key.gsub(/\D/,'')
+    unless params[:papel].blank?
+      params[:papel].each do |key,value|
+        #id=key.gsub(/\D/,'')
+        id= key
         user=User.find(id)
-        user.papel=value
+        user.papel = value
         user.save!
+      end
+
+      respond_to do |format|
+        format.js
       end
     end
   end
