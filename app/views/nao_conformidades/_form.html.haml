@@ -5,4 +5,4 @@
     = f.input :prazo
     = f.collection_select :checklist, @checklists, :id, :identificacao, { include_blank: "Escolha a Checklist" }
     = select_tag(:item_id, '')
-    = f.action :submit, :as => :input
+    = f.action :submit, :as => :input, :label => "Registrar"
