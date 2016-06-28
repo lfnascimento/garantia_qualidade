@@ -20,9 +20,9 @@
     <%= f.text_field :fase %>
   </div>
   <div id="item">
-    <%= f.semantic_fields_for :items do |item|%>
+    <%= f.semantic_fields_for :itens do |item|%>
       <%= render 'item_fields', f: item %>
-      <%= link_to_add_association '+', f, :items, class: "btn-xs btn-success" %>
+      <%= link_to_add_association '+', f, :itens, class: "btn-xs btn-success" %>
     <% end %>
   </div>
   <div class="actions">
