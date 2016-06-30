@@ -8,7 +8,7 @@ class AplicacoesController < ApplicationController
     respond_to do |format|
       if @aplicacao.save
         format.html { redirect_to @aplicacao, notice: 'Checklist aplicada com sucesso.' }
-        format.json { render :show, status: :created, location: @aplicacao }
+        format.json { render :index, status: :created, location: @aplicacao }
       else
         format.html { render :new }
         format.json { render json: @aplicacao.errors, status: :unprocessable_entity }
@@ -18,7 +18,8 @@ class AplicacoesController < ApplicationController
 
   def show
     @aplicacao = Aplicacao.find(params[:id])
-    #@itens = @checklist.itens
+    @checklist = @aplicacao.checklist
+    @itens = @checklist.itens_ordernados
   end
 
   private
@@ -26,4 +27,6 @@ class AplicacoesController < ApplicationController
   def aplicacao_params
     params.require(:aplicacao).permit(:prazo, :checklist_id, :projeto_id)
   end
+
 end
+

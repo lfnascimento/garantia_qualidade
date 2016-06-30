@@ -1,5 +1,5 @@
 class NaoConformidadesController < ApplicationController
-  before_action :set_nao_conformidade, only: [:show, :edit, :update, :destroy]
+  before_action :set_nao_conformidade, only: [:index, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource
   # GET /nao_conformidades
@@ -31,7 +31,7 @@ class NaoConformidadesController < ApplicationController
     respond_to do |format|
       if @nao_conformidade.save
         format.html { redirect_to @nao_conformidade, notice: 'Nao conformidade was successfully created.' }
-        format.json { render :show, status: :created, location: @nao_conformidade }
+        format.json { render :index, status: :created, location: @nao_conformidade }
       else
         format.html { render :new }
         format.json { render json: @nao_conformidade.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class NaoConformidadesController < ApplicationController
     respond_to do |format|
       if @nao_conformidade.update(nao_conformidade_params)
         format.html { redirect_to @nao_conformidade, notice: 'Nao conformidade was successfully updated.' }
-        format.json { render :show, status: :ok, location: @nao_conformidade }
+        format.json { render :index, status: :ok, location: @nao_conformidade }
       else
         format.html { render :edit }
         format.json { render json: @nao_conformidade.errors, status: :unprocessable_entity }

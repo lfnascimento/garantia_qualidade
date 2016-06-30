@@ -11,8 +11,8 @@ RSpec.describe NaoConformidadesController, type: :routing do
       expect(:get => "/nao_conformidades/new").to route_to("nao_conformidades#new")
     end
 
-    it "routes to #show" do
-      expect(:get => "/nao_conformidades/1").to route_to("nao_conformidades#show", :id => "1")
+    it "routes to #index" do
+      expect(:get => "/nao_conformidades/1").to route_to("nao_conformidades#index", :id => "1")
     end
 
     it "routes to #edit" do

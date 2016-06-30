@@ -1,7 +1,7 @@
 class ChecklistsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_checklist, only: [:show, :edit, :update, :destroy]
+  before_action :set_checklist, only: [:index, :edit, :update, :destroy]
   # GET /checklists
   # GET /checklists.json
   def index
@@ -33,7 +33,7 @@ class ChecklistsController < ApplicationController
     respond_to do |format|
       if @checklist.save
         format.html { redirect_to @checklist, notice: 'Checklist was successfully created.' }
-        format.json { render :show, status: :created, location: @checklist }
+        format.json { render :index, status: :created, location: @checklist }
       else
         format.html { render :new }
         format.json { render json: @checklist.errors, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class ChecklistsController < ApplicationController
     respond_to do |format|
       if @checklist.update(checklist_params)
         format.html { redirect_to @checklist, notice: 'Checklist was successfully updated.' }
-        format.json { render :show, status: :ok, location: @checklist }
+        format.json { render :index, status: :ok, location: @checklist }
       else
         format.html { render :edit }
         format.json { render json: @checklist.errors, status: :unprocessable_entity }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "projetos/show", type: :view do
+RSpec.describe "projetos/index", type: :view do
   before(:each) do
     @projeto = assign(:projeto, Projeto.create!(
       :nome => "Nome",

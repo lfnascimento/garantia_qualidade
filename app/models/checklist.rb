@@ -7,4 +7,8 @@ class Checklist < ActiveRecord::Base
   def to_s
     "#{self.identificacao} - #{self.fase}"
   end
+
+  def itens_ordernados
+    self.itens.order(:ordem)
+  end
 end

@@ -1,0 +1,29 @@
+%p#notice
+  = notice
+
+%p
+  %strong Projeto:
+  = @aplicacao.projeto
+
+%p
+  %strong Checklist:
+  = @checklist
+
+%p
+  %table{class: "table table-striped"}
+    %thead
+      %tr
+        %th Descrição dos Itens
+        %th Tipo
+        %th Resposta
+
+    - @respostas.each do |resposta|
+      %tr
+        %td
+          = resposta.item.descricao
+        %td
+          = resposta.item.tipo
+        %td
+          = resposta
+
+= link_to 'Voltar', aplicacao_path(@aplicacao)

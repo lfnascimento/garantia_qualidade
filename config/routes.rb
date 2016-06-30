@@ -8,7 +8,20 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :aplicacoes
+  resources :aplicacoes do
+    #member do
+      #post controller: :respostas, action: :salvar_respostas
+      #get controller: :respostas, action: :index
+    #end
+    #resources :respostas, only: [:salvar_respostas, :index]
+    resources :respostas
+  end
+
+  #namespace :aplicacoes do
+   # resources :respostas
+    #post controller: :respostas, action: :salvar_respostas
+    #get controller: :respostas, action: :index
+  #end
 
   get 'admin/' => 'admin#index'
   get 'get_checklist_itens' => 'nao_conformidades#get_checklist_itens'
@@ -16,6 +29,10 @@ Rails.application.routes.draw do
   root 'checklists#index'
   
   post 'admin/trocar_papel' => 'admin#trocar_papel'
+
+  post 'aplicacoes/:aplicacao_id/respostas/salvar_respostas' => 'respostas#salvar_respostas'
+  #get 'respostas/index' => 'respostas#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

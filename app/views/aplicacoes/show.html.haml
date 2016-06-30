@@ -7,9 +7,31 @@
 
 %p
   %strong Checklist:
-  = @aplicacao.checklist
+  = @checklist
 
 %p
-  = #f.input :authors, :as => :check_boxes, :collection => Item.order("last_name ASC").where("checklist_id = ?", @aplicacao.checklist)
+  = form_tag("#{@aplicacao.id}/respostas/salvar_respostas", method: :salvar_respostas) do
+    %table{class: "table table-striped"}
+      %thead
+        %tr
+          %th Descrição dos Itens
+          %th Tipo
+          %th Sim
+          %th Não
+      - @itens.each do |item|
+        %tr
+          %td
+            = item.descricao
+          %td
+            = item.tipo
+          = # f.input :itens, :as => :check_boxes, :collection => Item.order("ordem ASC").where("checklist_id = ?", @aplicacao.checklist)
+          %td
+            = radio_button_tag("resposta[item_id][#{item.id}]", true)
+          = #label_tag("resposta_sim_#{item.id}", "Sim")
+          %td
+            = radio_button_tag("resposta[item_id][#{item.id}]", false)
+          = #slabel_tag("resposta_nao_#{item.id}", "Não")
+          = #hidden_field_tag(:item_id, item.id)
+    = submit_tag("Registrar")
 
 = link_to 'Voltar', aplicacoes_path

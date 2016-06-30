@@ -44,10 +44,10 @@ RSpec.describe ProjetosController, type: :controller do
     end
   end
 
-  describe "GET #show" do
+  describe "GET #index" do
     it "assigns the requested projeto as @projeto" do
       projeto = Projeto.create! valid_attributes
-      get :show, {:id => projeto.to_param}, valid_session
+      get :index, {:id => projeto.to_param}, valid_session
       expect(assigns(:projeto)).to eq(projeto)
     end
   end

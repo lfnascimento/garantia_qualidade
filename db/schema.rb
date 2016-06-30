@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626220530) do
+ActiveRecord::Schema.define(version: 20160628001751) do
 
   create_table "aplicacoes", force: :cascade do |t|
     t.integer  "projeto_id",     limit: 4
@@ -78,6 +78,17 @@ ActiveRecord::Schema.define(version: 20160626220530) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "respostas", force: :cascade do |t|
+    t.boolean  "resposta"
+    t.integer  "aplicacao_id", limit: 4
+    t.integer  "item_id",      limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "respostas", ["aplicacao_id"], name: "index_respostas_on_aplicacao_id", using: :btree
+  add_index "respostas", ["item_id"], name: "index_respostas_on_item_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",   null: false
     t.string   "encrypted_password",     limit: 255, default: "",   null: false
@@ -106,4 +117,6 @@ ActiveRecord::Schema.define(version: 20160626220530) do
   add_foreign_key "nao_confomidades", "itens"
   add_foreign_key "nao_conformidades", "checklists"
   add_foreign_key "nao_conformidades", "itens"
+  add_foreign_key "respostas", "aplicacoes"
+  add_foreign_key "respostas", "itens"
 end

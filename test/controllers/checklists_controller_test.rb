@@ -24,8 +24,8 @@ class ChecklistsControllerTest < ActionController::TestCase
     assert_redirected_to checklist_path(assigns(:checklist))
   end
 
-  test "should show checklist" do
-    get :show, id: @checklist
+  test "should index checklist" do
+    get :index, id: @checklist
     assert_response :success
   end
 

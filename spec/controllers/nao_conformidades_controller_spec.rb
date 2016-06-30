@@ -44,10 +44,10 @@ RSpec.describe NaoConformidadesController, type: :controller do
     end
   end
 
-  describe "GET #show" do
+  describe "GET #index" do
     it "assigns the requested nao_conformidade as @nao_conformidade" do
       nao_conformidade = NaoConformidade.create! valid_attributes
-      get :show, {:id => nao_conformidade.to_param}, valid_session
+      get :index, {:id => nao_conformidade.to_param}, valid_session
       expect(assigns(:nao_conformidade)).to eq(nao_conformidade)
     end
   end

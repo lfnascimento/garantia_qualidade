@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "nao_conformidades/show", type: :view do
+RSpec.describe "nao_conformidades/index", type: :view do
   before(:each) do
     @nao_conformidade = assign(:nao_conformidade, NaoConformidade.create!(
       :descricao => "Descricao",
