@@ -1,7 +1,7 @@
 class ChecklistsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_checklist, only: [:index, :edit, :update, :destroy]
+  before_action :set_checklist, only: [:edit, :update, :destroy]
   # GET /checklists
   # GET /checklists.json
   def index

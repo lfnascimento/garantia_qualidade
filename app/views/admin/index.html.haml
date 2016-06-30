@@ -5,13 +5,15 @@
     %tr
       %th Usuário
       %th Papel
+      %th Avaliado
     - @users.each do |user|
       %tr
         %td{:class => "col-md-2"}
           = user.email
         %td{:class => "col-md-2"}
-          = select_tag "papel[#{user.id}]", options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel)
-        = #hidden_field :user, :id, { value: user.id }
+          = select_tag "user[#{user.id}][papel]", options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel)
+        %td{:class => "col-md-2"}
+          = check_box_tag "user[#{user.id}][avaliado]", "sim", user.avaliado
 
 
 

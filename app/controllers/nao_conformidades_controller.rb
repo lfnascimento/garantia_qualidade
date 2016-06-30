@@ -1,5 +1,5 @@
 class NaoConformidadesController < ApplicationController
-  before_action :set_nao_conformidade, only: [:index, :edit, :update, :destroy]
+  before_action :set_nao_conformidade, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource
   # GET /nao_conformidades
