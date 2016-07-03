@@ -1,0 +1,3 @@
+.nested-fields
+  = f.collection_select :projeto_id, @responsaveis, :id, :email, { include_blank: "Escolha o Responsável" }
+  = link_to_remove_association "-", f, class: "btn-xs btn-danger"

@@ -4,8 +4,11 @@
     = f.input :nome
     = f.label :desc, "Descrição"
     = f.input :desc
-    = f.label :responsavel, "Responsável"
-    = f.input :responsavel
+
+    = f.semantic_fields_for :users do |user|
+      = render 'user_fields', f: user
+      = link_to_add_association '+', f, :users, class: "btn-xs btn-success"
+
 
   = f.actions do
     = f.action :submit, :as => :input

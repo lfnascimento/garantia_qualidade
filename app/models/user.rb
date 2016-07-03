@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  belongs_to :projeto
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -12,4 +14,7 @@ class User < ActiveRecord::Base
     self.papel == "QA"
   end
 
+  def to_s
+    nome
+  end
 end

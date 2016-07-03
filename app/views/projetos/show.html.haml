@@ -7,8 +7,10 @@
   %b Descrição:
   = @projeto.desc
 %p
-  %b Responsável:
-  = @projeto.responsavel
+  %b Stakeholders:
+  - @projeto.users.each do |user|
+    = user
+    %br
 
 = link_to 'Editar', edit_projeto_path(@projeto)
 \|

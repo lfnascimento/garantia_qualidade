@@ -15,6 +15,10 @@ class ProjetosController < ApplicationController
   # GET /projetos/new
   def new
     @projeto = Projeto.new
+    @responsaveis = User.all
+    #Rails.logger.debug
+    @projeto.users.build
+
   end
 
   # GET /projetos/1/edit
@@ -24,11 +28,23 @@ class ProjetosController < ApplicationController
   # POST /projetos
   # POST /projetos.json
   def create
-    @projeto = Projeto.new(projeto_params)
+    params = projeto_params
+    users = params["users_attributes"]
+    params.delete("users_attributes")
+
+    @projeto = Projeto.new(params)
+
+    users.each do |index, value|
+      id = value[:projeto_id].to_i
+      user = User.find(id)
+      user.projeto = @projeto
+      user.save
+    end
+
 
     respond_to do |format|
       if @projeto.save
-        format.html { redirect_to @projeto, notice: 'Projeto was successfully created.' }
+        format.html { redirect_to @projeto, notice: 'Projeto criado com sucesso.' }
         format.json { render :index, status: :created, location: @projeto }
       else
         format.html { render :new }
@@ -69,6 +85,7 @@ class ProjetosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def projeto_params
-      params.require(:projeto).permit(:nome, :desc, :responsavel)
+      params.require(:projeto).permit(:nome, :desc, :responsavel,
+                            users_attributes: [:projeto_id])
     end
 end

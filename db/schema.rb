@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630020712) do
+ActiveRecord::Schema.define(version: 20160703231317) do
 
   create_table "aplicacoes", force: :cascade do |t|
     t.integer  "projeto_id",     limit: 4
@@ -109,9 +109,12 @@ ActiveRecord::Schema.define(version: 20160630020712) do
     t.string   "papel",                  limit: 255
     t.boolean  "admin",                              default: true,  null: false
     t.boolean  "avaliado",                           default: false
+    t.integer  "projeto_id",             limit: 4
+    t.string   "nome",                   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["projeto_id"], name: "index_users_on_projeto_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "nao_confomidades", "checklists"
@@ -120,4 +123,5 @@ ActiveRecord::Schema.define(version: 20160630020712) do
   add_foreign_key "nao_conformidades", "itens"
   add_foreign_key "respostas", "aplicacoes"
   add_foreign_key "respostas", "itens"
+  add_foreign_key "users", "projetos"
 end
