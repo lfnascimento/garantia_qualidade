@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Nome:
+  = @organizacao.nome
+%p
+  %b Descricao:
+  = @organizacao.descricao
+%p
+  %b Logo:
+  = @organizacao.logo
+
+= link_to 'Edit', edit_organizacao_path(@organizacao)
+\|
+= link_to 'Back', organizacoes_path

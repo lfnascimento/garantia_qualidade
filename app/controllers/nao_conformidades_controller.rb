@@ -1,11 +1,18 @@
 class NaoConformidadesController < ApplicationController
-  before_action :set_nao_conformidade, only: [:edit, :update, :destroy]
+  before_action :set_nao_conformidade, only: [:edit, :update, :destroy, :show]
+  before_action :set_aplicacoes, only: [:new, :edit]
   before_action :authenticate_user!
+
   load_and_authorize_resource
+
   # GET /nao_conformidades
   # GET /nao_conformidades.json
   def index
-    @nao_conformidades = NaoConformidade.all
+    @nao_conformidades =  NaoConformidade.joins(aplicacao: {checklist: :organizacao}).
+        where("checklists.organizacao_id = ?", current_user.organizacao_id)
+    if current_user.avaliado?
+      @nao_conformidades = @nao_conformidades.select { |nc| nc.user == current_user }
+    end
   end
 
   # GET /nao_conformidades/1
@@ -16,7 +23,6 @@ class NaoConformidadesController < ApplicationController
   # GET /nao_conformidades/new
   def new
     @nao_conformidade = NaoConformidade.new
-    @checklists = Checklist.all
   end
 
   # GET /nao_conformidades/1/edit
@@ -64,9 +70,9 @@ class NaoConformidadesController < ApplicationController
   end
 
   def get_checklist_itens
-    if !params[:checklist_id].blank?
-      checklist = Checklist.find(params[:checklist_id])
-      @item_options = checklist.itens.sort_by{ |item| item.descricao }
+    if !params[:aplicacao_id].blank?
+      aplicacao = Aplicacao.find(params[:aplicacao_id])
+      @item_options = aplicacao.checklist.itens.sort_by{ |item| item.descricao }
       @item_options = @item_options.map { |item| [item.descricao, item.id] }
     else
       @item_options = [[]]
@@ -75,14 +81,46 @@ class NaoConformidadesController < ApplicationController
     render :partial => 'item_options', :layout => nil
   end
 
+  def get_responsaveis
+    if !params[:aplicacao_id].blank?
+      aplicacao = Aplicacao.find(params[:aplicacao_id])
+      responsaveis_options = aplicacao.projeto.users.sort_by{ |user| user.nome }
+      @responsaveis_options = responsaveis_options.map { |user| [user.nome, user.id] }
+    else
+      @responsaveis_options = [[]]
+    end
+    render :partial => 'responsaveis_options', :layout => nil
+  end
+
+  protected
+
+  def checa_organizacao(nao_conformidade)
+    p "Nao conformidade: #{nao_conformidade.aplicacao}"
+    @aplicacao = nao_conformidade.aplicacao
+    p "Aplicacao: #{@aplicacao}"
+    if @aplicacao.checklist.organizacao != current_user.organizacao
+      flash[:notice] = "Acesso não permitido!"
+      if request.env["HTTP_REFERER"].present?
+        redirect_to :back
+      else
+        redirect_to root_path
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nao_conformidade
       @nao_conformidade = NaoConformidade.find(params[:id])
+      checa_organizacao(@nao_conformidade)
     end
+
+  def set_aplicacoes
+    @aplicacoes = Aplicacao.find_all_by_organizacao(current_user.organizacao)
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nao_conformidade_params
-      params.require(:nao_conformidade).permit(:descricao, :origem, :prazo, :checklist_id, :item_id)
+      params.require(:nao_conformidade).permit(:descricao, :origem, :prazo, :aplicacao_id, :item_id, :user_id)
     end
 end

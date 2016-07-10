@@ -2,8 +2,8 @@
   = f.inputs do
     = f.input :descricao, size: "60x12"
     = f.input :origem, size: "12x12"
-    = f.collection_select :checklist, @checklists, :id, :identificacao, { include_blank: "Escolha a Checklist" }
-    = select_tag(:item_id, '')
+    = f.collection_select :aplicacao_id, @aplicacoes, :id, :checklist, { include_blank: "Escolha a Checklist" }
+    = f.collection_select :item_id, (@nao_conformidade.checklist.itens rescue []), :id, :descricao
+    = f.collection_select :user_id, (if @nao_conformidade.user;[@nao_conformidade.user];else [];end), :id, :nome
     = f.input :prazo
-    = f.input :responsavel
     = f.action :submit, :as => :input, :label => "Registrar"

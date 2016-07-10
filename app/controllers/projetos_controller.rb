@@ -1,10 +1,10 @@
 class ProjetosController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_projeto, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
   # GET /projetos
   # GET /projetos.json
   def index
-    @projetos = Projeto.all
+    @projetos = Projeto.find_all_by_organizacao(current_user.organizacao)
   end
 
   # GET /projetos/1
@@ -15,10 +15,9 @@ class ProjetosController < ApplicationController
   # GET /projetos/new
   def new
     @projeto = Projeto.new
-    @responsaveis = User.all
+    @responsaveis = User.find_all_by_organizacao(current_user.organizacao)
     #Rails.logger.debug
     @projeto.users.build
-
   end
 
   # GET /projetos/1/edit
@@ -77,10 +76,21 @@ class ProjetosController < ApplicationController
     end
   end
 
+  protected
+
+  def checa_organizacao
+    if @projeto.organizacao != current_user.organizacao
+      flash[:notice] = "Acesso não permitido!"
+      redirect_to root_path
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_projeto
       @projeto = Projeto.find(params[:id])
+      checa_organizacao
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

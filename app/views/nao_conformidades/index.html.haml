@@ -4,22 +4,22 @@
   %thead
     %tr
       %th Descrição
-      %th Origem
-      %th Prazo
       %th Checklist
       %th Item
+      %th Prazo
 
   %tbody
     - @nao_conformidades.each do |nao_conformidade|
       %tr
         %td= nao_conformidade.descricao
-        %td= nao_conformidade.origem
-        %td= nao_conformidade.prazo
-        %td= nao_conformidade.checklist
+        %td= nao_conformidade.aplicacao
         %td= nao_conformidade.item
+        %td= nao_conformidade.prazo
         %td= link_to 'Visualizar', nao_conformidade
-        %td= link_to 'Editar', edit_nao_conformidade_path(nao_conformidade)
-        %td= link_to 'Excluir', nao_conformidade, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if current_user.qa?
+          %td= link_to 'Editar', edit_nao_conformidade_path(nao_conformidade)
+          %td= link_to 'Excluir', nao_conformidade, :method => :delete, :data => { :confirm => 'Tem certeza que deseja excluir?' }
+
 
 %br
 

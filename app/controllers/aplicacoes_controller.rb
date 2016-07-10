@@ -1,8 +1,6 @@
 class AplicacoesController < ApplicationController
 
   def create
-    p "aplicacoes #{aplicacao_params}"
-    p "params id #{params[:id]}"
     @aplicacao = Aplicacao.new(aplicacao_params)
 
     respond_to do |format|
@@ -18,8 +16,22 @@ class AplicacoesController < ApplicationController
 
   def show
     @aplicacao = Aplicacao.find(params[:id])
+    checa_organizacao
     @checklist = @aplicacao.checklist
     @itens = @checklist.itens_ordernados
+  end
+
+  private
+
+   def checa_organizacao
+    if @aplicacao.checklist.organizacao != current_user.organizacao
+      flash[:notice] = "Acesso não permitido!"
+      if request.env["HTTP_REFERER"].present?
+        redirect_to :back
+      else
+        redirect_to root_path
+      end
+    end
   end
 
   private

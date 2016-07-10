@@ -3,6 +3,7 @@ class Checklist < ActiveRecord::Base
   accepts_nested_attributes_for :itens
   has_many :aplicacoes
   has_many :projetos, through: :aplicacoes
+  belongs_to :organizacao
 
   def to_s
     "#{self.identificacao} - #{self.fase}"
@@ -10,5 +11,9 @@ class Checklist < ActiveRecord::Base
 
   def itens_ordernados
     self.itens.order(:ordem)
+  end
+
+  def self.find_all_by_organizacao(id)
+    self.all.where(organizacao: id)
   end
 end

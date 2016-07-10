@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :organizacoes
   resources :projetos
   resources :nao_conformidades
   devise_for :users
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
 
   get 'admin/' => 'admin#index'
   get 'get_checklist_itens' => 'nao_conformidades#get_checklist_itens'
+  get 'get_responsaveis' => 'nao_conformidades#get_responsaveis'
 
   root 'checklists#index'
   

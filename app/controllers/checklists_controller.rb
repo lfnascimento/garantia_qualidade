@@ -1,17 +1,16 @@
 class ChecklistsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_checklist, only: [:edit, :update, :destroy]
+  before_action :set_checklist, only: [:show, :edit, :update, :destroy]
   # GET /checklists
   # GET /checklists.json
   def index
-    @checklists = Checklist.all
+    @checklists = Checklist.find_all_by_organizacao(current_user.organizacao)
   end
 
   # GET /checklists/1
   # GET /checklists/1.json
   def show
-    @checklist = Checklist.find(params[:id])
     @itens = @checklist.itens
   end
 
@@ -28,11 +27,11 @@ class ChecklistsController < ApplicationController
   # POST /checklists
   # POST /checklists.json
   def create
-    @checklist = Checklist.new(checklist_params)
+    @checklist = Checklist.new(checklist_params.merge(organizacao: current_user.organizacao))
 
     respond_to do |format|
       if @checklist.save
-        format.html { redirect_to @checklist, notice: 'Checklist was successfully created.' }
+        format.html { redirect_to @checklist, notice: 'Checklist criada com sucesso.' }
         format.json { render :index, status: :created, location: @checklist }
       else
         format.html { render :new }
@@ -67,13 +66,24 @@ class ChecklistsController < ApplicationController
 
   def aplicacao
     @checklist = Checklist.find(params[:id])
+    checa_organizacao
     @aplicacao = Aplicacao.new
+  end
+
+  protected
+
+  def checa_organizacao
+    if @checklist.organizacao != current_user.organizacao
+      flash[:notice] = "Acesso não permitido!"
+      redirect_to root_path
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_checklist
       @checklist = Checklist.find(params[:id])
+      checa_organizacao
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -17,7 +17,12 @@ class Ability
 
       if user.admin?
         can :manage, Projeto
+        can :manage, Organizacao
       end
+
+    if user.avaliado?
+      can :read, NaoConformidade
+    end
 
     # The first argument to `can` is the action you are giving the user
     # permission to do.

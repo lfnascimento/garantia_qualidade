@@ -1,0 +1,8 @@
+= semantic_form_for @organizacao do |f|
+  = f.inputs do
+    = f.input :nome
+    = f.input :descricao
+    = f.input :logo
+
+  = f.actions do
+    = f.action :submit, :as => :input

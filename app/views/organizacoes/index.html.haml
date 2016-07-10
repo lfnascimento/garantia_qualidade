@@ -1,0 +1,25 @@
+%h1 Listing organizacoes
+
+%table
+  %thead
+    %tr
+      %th Nome
+      %th Descricao
+      %th Logo
+      %th
+      %th
+      %th
+
+  %tbody
+    - @organizacoes.each do |organizacao|
+      %tr
+        %td= organizacao.nome
+        %td= organizacao.descricao
+        %td= organizacao.logo
+        %td= link_to 'Show', organizacao
+        %td= link_to 'Edit', edit_organizacao_path(organizacao)
+        %td= link_to 'Destroy', organizacao, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Organizacao', new_organizacao_path

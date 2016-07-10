@@ -1,1 +1,19 @@
-$("#form_trocar_papel").append("<div class='alert alert-success alert-dismissable'> Papéis salvos com sucesso </div>");
+<% @users.each do |user| %>
+    <% if user.errors.empty? %>
+        if ($("#papeis_salvos").length == 0) {
+            $("#form_trocar_papel").append("<div id='papeis_salvos' class='alert alert-success alert-dismissable'> Papéis salvos com sucesso </div>");
+        }
+        else {
+            $("#papeis_salvos").remove();
+            $("#form_trocar_papel").append("<div id='papeis_salvos' class='alert alert-success alert-dismissable'> Papéis salvos com sucesso </div>");
+        }
+    <% else %>
+        if ($("#papeis_salvos").length == 0) {
+            $("#form_trocar_papel").append("<div id='papeis_salvos' class='alert alert-danger alert-dismissable'> <%= user.errors.full_messages.first %> </div>");
+        } else {
+            $("#papeis_salvos").remove();
+            $("#form_trocar_papel").append("<div id='papeis_salvos' class='alert alert-danger alert-dismissable'> <%= user.errors.full_messages.first %> </div>");
+        }
+        <% break %>
+    <% end %>
+<% end %>

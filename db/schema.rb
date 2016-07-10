@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703231317) do
+ActiveRecord::Schema.define(version: 20160710013800) do
 
   create_table "aplicacoes", force: :cascade do |t|
     t.integer  "projeto_id",     limit: 4
@@ -26,11 +26,14 @@ ActiveRecord::Schema.define(version: 20160703231317) do
   add_index "aplicacoes", ["projeto_id"], name: "index_aplicacoes_on_projeto_id", using: :btree
 
   create_table "checklists", force: :cascade do |t|
-    t.string   "identificacao", limit: 255
-    t.string   "fase",          limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "identificacao",  limit: 255
+    t.string   "fase",           limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "organizacao_id", limit: 4
   end
+
+  add_index "checklists", ["organizacao_id"], name: "index_checklists_on_organizacao_id", using: :btree
 
   create_table "itens", force: :cascade do |t|
     t.text     "descricao",    limit: 65535
@@ -65,18 +68,33 @@ ActiveRecord::Schema.define(version: 20160703231317) do
     t.integer  "prazo",        limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "user_id",      limit: 4
+    t.integer  "aplicacao_id", limit: 4
   end
 
+  add_index "nao_conformidades", ["aplicacao_id"], name: "index_nao_conformidades_on_aplicacao_id", using: :btree
   add_index "nao_conformidades", ["checklist_id"], name: "index_nao_conformidades_on_checklist_id", using: :btree
   add_index "nao_conformidades", ["item_id"], name: "index_nao_conformidades_on_item_id", using: :btree
+  add_index "nao_conformidades", ["user_id"], name: "index_nao_conformidades_on_user_id", using: :btree
+
+  create_table "organizacoes", force: :cascade do |t|
+    t.string   "nome",       limit: 255
+    t.text     "descricao",  limit: 65535
+    t.string   "logo",       limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "projetos", force: :cascade do |t|
-    t.string   "nome",        limit: 255
-    t.string   "desc",        limit: 255
-    t.string   "responsavel", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "nome",           limit: 255
+    t.string   "desc",           limit: 255
+    t.string   "responsavel",    limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "organizacao_id", limit: 4
   end
+
+  add_index "projetos", ["organizacao_id"], name: "index_projetos_on_organizacao_id", using: :btree
 
   create_table "respostas", force: :cascade do |t|
     t.boolean  "resposta"
@@ -111,17 +129,24 @@ ActiveRecord::Schema.define(version: 20160703231317) do
     t.boolean  "avaliado",                           default: false
     t.integer  "projeto_id",             limit: 4
     t.string   "nome",                   limit: 255
+    t.integer  "organizacao_id",         limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["organizacao_id"], name: "index_users_on_organizacao_id", using: :btree
   add_index "users", ["projeto_id"], name: "index_users_on_projeto_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "checklists", "organizacoes"
   add_foreign_key "nao_confomidades", "checklists"
   add_foreign_key "nao_confomidades", "itens"
+  add_foreign_key "nao_conformidades", "aplicacoes"
   add_foreign_key "nao_conformidades", "checklists"
   add_foreign_key "nao_conformidades", "itens"
+  add_foreign_key "nao_conformidades", "users"
+  add_foreign_key "projetos", "organizacoes"
   add_foreign_key "respostas", "aplicacoes"
   add_foreign_key "respostas", "itens"
+  add_foreign_key "users", "organizacoes"
   add_foreign_key "users", "projetos"
 end

@@ -11,9 +11,9 @@
         %td{:class => "col-md-2"}
           = user.email
         %td{:class => "col-md-2"}
-          = select_tag "user[#{user.id}][papel]", options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel)
+          = select_tag "user[#{user.id}][papel]", options_for_select([['QA', 'QA'], ['SEPG', 'SEPG']], user.papel), onchange: "if (this.value == 'QA') { $('#user_#{user.id}_avaliado')[0].setAttribute('disabled', true) } else { $('#user_#{user.id}_avaliado')[0].removeAttribute('disabled') };"
         %td{:class => "col-md-2"}
-          = check_box_tag "user[#{user.id}][avaliado]", "sim", user.avaliado
+          = check_box_tag "user[#{user.id}][avaliado]", "sim", user.avaliado, disabled: user.qa?
 
 
 

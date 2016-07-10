@@ -11,10 +11,14 @@
   = @nao_conformidade.prazo
 %p
   %b Checklist:
-  = @nao_conformidade.checklist
+  = @nao_conformidade.aplicacao
 %p
   %b Item:
   = @nao_conformidade.item
+
+%p
+  %b Responsável:
+  = @nao_conformidade.responsavel
 
 = link_to 'Editar', edit_nao_conformidade_path(@nao_conformidade)
 \|
