@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   post 'admin/trocar_papel' => 'admin#trocar_papel'
 
   post 'aplicacoes/:aplicacao_id/respostas/salvar_respostas' => 'respostas#salvar_respostas'
+
+  post 'nao_conformidades/salvar_status' => 'nao_conformidades#salvar_status'
+
   #get 'respostas/index' => 'respostas#index'
 
 

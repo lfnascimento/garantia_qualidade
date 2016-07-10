@@ -22,6 +22,7 @@ class Ability
 
     if user.avaliado?
       can :read, NaoConformidade
+      can :salvar_status, NaoConformidade
     end
 
     # The first argument to `can` is the action you are giving the user

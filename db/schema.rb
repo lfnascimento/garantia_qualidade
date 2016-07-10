@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710013800) do
+ActiveRecord::Schema.define(version: 20160710180941) do
 
   create_table "aplicacoes", force: :cascade do |t|
     t.integer  "projeto_id",     limit: 4
@@ -47,29 +47,17 @@ ActiveRecord::Schema.define(version: 20160710013800) do
 
   add_index "itens", ["checklist_id"], name: "index_itens_on_checklist_id", using: :btree
 
-  create_table "nao_confomidades", force: :cascade do |t|
-    t.integer  "checklist_id", limit: 4
-    t.integer  "item_id",      limit: 4
-    t.text     "dewcricao",    limit: 65535
-    t.text     "origem",       limit: 65535
-    t.integer  "prazo",        limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "nao_confomidades", ["checklist_id"], name: "index_nao_confomidades_on_checklist_id", using: :btree
-  add_index "nao_confomidades", ["item_id"], name: "index_nao_confomidades_on_item_id", using: :btree
-
   create_table "nao_conformidades", force: :cascade do |t|
     t.integer  "checklist_id", limit: 4
     t.integer  "item_id",      limit: 4
     t.text     "descricao",    limit: 65535
     t.text     "origem",       limit: 65535
     t.integer  "prazo",        limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "user_id",      limit: 4
     t.integer  "aplicacao_id", limit: 4
+    t.string   "status",       limit: 255,   default: "aberta"
   end
 
   add_index "nao_conformidades", ["aplicacao_id"], name: "index_nao_conformidades_on_aplicacao_id", using: :btree
@@ -138,8 +126,6 @@ ActiveRecord::Schema.define(version: 20160710013800) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "checklists", "organizacoes"
-  add_foreign_key "nao_confomidades", "checklists"
-  add_foreign_key "nao_confomidades", "itens"
   add_foreign_key "nao_conformidades", "aplicacoes"
   add_foreign_key "nao_conformidades", "checklists"
   add_foreign_key "nao_conformidades", "itens"

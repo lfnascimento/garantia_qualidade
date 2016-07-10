@@ -1,26 +1,33 @@
 %h1 Não Conformidades
-
-%table{:class => "table table-striped"}
-  %thead
-    %tr
-      %th Descrição
-      %th Checklist
-      %th Item
-      %th Prazo
-
-  %tbody
-    - @nao_conformidades.each do |nao_conformidade|
+= form_tag ({ action: :salvar_status }) do
+  %table{:class => "table table-striped"}
+    %thead
       %tr
-        %td= nao_conformidade.descricao
-        %td= nao_conformidade.aplicacao
-        %td= nao_conformidade.item
-        %td= nao_conformidade.prazo
-        %td= link_to 'Visualizar', nao_conformidade
-        - if current_user.qa?
-          %td= link_to 'Editar', edit_nao_conformidade_path(nao_conformidade)
-          %td= link_to 'Excluir', nao_conformidade, :method => :delete, :data => { :confirm => 'Tem certeza que deseja excluir?' }
+        %th Descrição
+        %th Checklist
+        %th Item
+        %th Status
+        %th Data de Registro
+        %th Prazo
+    %tbody
+      - @nao_conformidades.each do |nao_conformidade|
+        %tr
+          %td= nao_conformidade.descricao
+          %td= nao_conformidade.aplicacao
+          %td= nao_conformidade.item
+          %td
+            = select_tag "nao_conformidades[#{nao_conformidade.id}][status]", options_for_select((current_user.avaliado? ? %w[Aberta Resolvendo Finalizada] : %w[Aberta Resolvendo Finalizada Concluída]), nao_conformidade.status)
+          %td= nao_conformidade.created_at.strftime("%d/%m/%Y")
+          %td= nao_conformidade.prazo_data
+          %td= link_to 'Visualizar', nao_conformidade
+          - if current_user.qa?
+            %td= link_to 'Editar', edit_nao_conformidade_path(nao_conformidade)
+            %td= link_to 'Excluir', nao_conformidade, :method => :delete, :data => { :confirm => 'Tem certeza que deseja excluir?' }
 
+  = submit_tag 'Salvar'
+
+%div{ id: 'div_reposta_salvar_status'}
 
 %br
-
-= link_to 'Registrar Não Conformidade', new_nao_conformidade_path
+- if current_user.qa?
+  = link_to 'Registrar Não Conformidade', new_nao_conformidade_path

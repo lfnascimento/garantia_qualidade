@@ -69,6 +69,20 @@ class NaoConformidadesController < ApplicationController
     end
   end
 
+  def salvar_status
+    if params[:nao_conformidades]
+      params[:nao_conformidades].each do |index, id|
+        nc = NaoConformidade.find(index)
+        nc.status = id[:status]
+        nc.save!
+      end
+    end
+    respond_to do |format|
+      format.html { redirect_to nao_conformidades_url, notice: 'Não Conformidades salvas com sucesso.' }
+    end
+  end
+
+
   def get_checklist_itens
     if !params[:aplicacao_id].blank?
       aplicacao = Aplicacao.find(params[:aplicacao_id])
