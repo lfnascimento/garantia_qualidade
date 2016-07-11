@@ -19,6 +19,8 @@
             = select_tag "nao_conformidades[#{nao_conformidade.id}][status]", options_for_select((current_user.avaliado? ? %w[Aberta Resolvendo Finalizada] : %w[Aberta Resolvendo Finalizada Concluída]), nao_conformidade.status)
           %td= nao_conformidade.created_at.strftime("%d/%m/%Y")
           %td= nao_conformidade.prazo_data
+          - if current_user.qa?
+            %td= link_to 'Alertar Responsável', '#', { onclick: "alertarResponsavel(#{nao_conformidade.user_id}, #{nao_conformidade.id});" }
           %td= link_to 'Visualizar', nao_conformidade
           - if current_user.qa?
             %td= link_to 'Editar', edit_nao_conformidade_path(nao_conformidade)

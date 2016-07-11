@@ -9,3 +9,7 @@ filling_select_itens_options = ->
     $("#nao_conformidade_user_id").html html
 $ ->
   $(document).on 'change', "#nao_conformidade_aplicacao_id", filling_select_itens_options
+
+@alertarResponsavel = (user_id, nc_id) ->
+  url_itens = "/nao_conformidades/alertar_responsavel"
+  $.ajax(type: 'POST', url: url_itens, data: {user_id: user_id, nc_id: nc_id })

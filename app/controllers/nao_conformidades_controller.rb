@@ -82,6 +82,14 @@ class NaoConformidadesController < ApplicationController
     end
   end
 
+  def alertar_responsavel
+    nc = NaoConformidade.find(params[:nc_id])
+    NaoConformidadeMailer.alertar_responsavel_email(nc.user, nc).deliver
+    respond_to do |format|
+      format.html { redirect_to nao_conformidades_url, notice: 'Email enviado.' }
+    end
+  end
+
 
   def get_checklist_itens
     if !params[:aplicacao_id].blank?

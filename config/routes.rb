@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   post 'nao_conformidades/salvar_status' => 'nao_conformidades#salvar_status'
 
+  post 'nao_conformidades/alertar_responsavel' => 'nao_conformidades#alertar_responsavel'
+
   #get 'respostas/index' => 'respostas#index'
 
 
