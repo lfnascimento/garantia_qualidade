@@ -27,3 +27,20 @@ h1, h2,  .h1 {
   font-size: 36px;
   color: #8d4007;
 }
+
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 100%;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+ul, ol {
+  list-style-type: none;
+}

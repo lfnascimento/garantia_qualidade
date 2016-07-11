@@ -31,7 +31,8 @@ class ProjetosController < ApplicationController
     users = params["users_attributes"]
     params.delete("users_attributes")
 
-    @projeto = Projeto.new(params)
+    #@projeto = Projeto.new(params)
+    @projeto = Projeto.new(params.merge(organizacao: current_user.organizacao))
 
     users.each do |index, value|
       id = value[:projeto_id].to_i
