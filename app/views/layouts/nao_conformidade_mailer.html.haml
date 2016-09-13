@@ -1,0 +1,9 @@
+%head
+  = stylesheet_link_tag 'email'
+%body{class: 'centered-wrapper'}
+  %div{class: 'centered-content'}
+    = yield
+    %footer
+      %b
+        = link_to 'Axurance - Sistema de Apoio para Garantia da Qualidade', '#'
+        = image_tag("quality-badge.svg", size: "22x22", alt: "Sistema de Apoio para Garantia da Qualidade - Axurance", class: 'logo')

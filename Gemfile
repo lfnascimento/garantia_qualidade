@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'premailer-rails'
+
+gem 'nokogiri'
+
 gem "cancancan", "~> 1.10"
 
 gem "spork-rails", "~> 4.0.0"

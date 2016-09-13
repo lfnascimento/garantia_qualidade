@@ -7,6 +7,8 @@ class Projeto < ActiveRecord::Base
 
   alias_attribute :responsaveis, :users
 
+  validates :nome, :responsavel, presence: true
+
   def to_s
     self.nome
   end

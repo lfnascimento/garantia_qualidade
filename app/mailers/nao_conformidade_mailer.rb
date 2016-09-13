@@ -5,7 +5,7 @@ class NaoConformidadeMailer < ApplicationMailer
       @user = user
       @nc = nc
       mail(to: @user.email, subject: 'Alerta de Não Conformidade') do |format|
-        format.html { render layout: 'mailer' }
+        format.html { render layout: 'nao_conformidade_mailer' }
       end
     end
 end

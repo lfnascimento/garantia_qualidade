@@ -1,4 +1,25 @@
-= @user.nome
-= @user.email
-
-= @nc.descricao
+%p
+  %b
+    = "Prezado(a) #{@user.nome.strip},"
+  %br
+  %br
+  Você está recebendo uma notificação de alerta de uma
+  %b
+    não conformidade.
+%div{class: 'nao-conformidade'}
+  %p
+    %b
+      Descrição:
+    = @nc.descricao
+  %p
+    %b
+      Origem:
+    = @nc.origem
+  %p
+    %b
+      Criada em 
+    = I18n.l @nc.created_at.to_date
+  %p
+    %b
+      Prazo máximo de resolução 
+    = I18n.l (@nc.created_at.to_date + @nc.prazo)

@@ -1,0 +1,50 @@
+.logo {
+  vertical-align: middle;
+  padding: 5px;
+}
+
+.centered-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 60%;
+  padding: 25px;
+  color: rgb(63, 63, 63);
+  font-family: Helvetica;
+  font-size: 1em;
+}
+
+.centered-wrapper:before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 0; height: 100%;
+  vertical-align: middle;
+}
+
+.centered-content {
+  vertical-align: middle;
+  background-color: rgb(243, 240, 240) none repeat scroll 0% 0%;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+footer {
+  font-family: "Arial Black";
+  font-size: 0.7em;
+  border-top: 1px solid rgb(212, 212, 212);
+  color: rgb(74, 74, 74);
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: rgb(74, 74, 74);
+  }
+  margin-top: 1em;
+}
+
+.nao-conformidade {
+  background-color: rgb(251, 141, 141) none repeat scroll 0% 0%;
+  padding: 1em ;
+  border-radius: 5px;
+  color: rgb(93, 47, 35); 
+  font-size: 0.8em;
+}
