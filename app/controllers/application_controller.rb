@@ -17,4 +17,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nome])
   end
+
+  def p80(obj=nil)
+    puts '*' * 80
+    puts obj
+    puts '*' * 80
+  end
 end

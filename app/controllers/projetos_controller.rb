@@ -24,23 +24,16 @@ class ProjetosController < ApplicationController
   def edit
   end
 
-  # POST /projetos
-  # POST /projetos.json
   def create
     params = projeto_params
     users = params["users_attributes"]
     params.delete("users_attributes")
-
-    #@projeto = Projeto.new(params)
     @projeto = Projeto.new(params.merge(organizacao: current_user.organizacao))
 
-    users.each do |index, value|
-      id = value[:projeto_id].to_i
-      user = User.find(id)
-      user.projeto = @projeto
-      user.save
+    users.each do |key, value|
+      user =  User.find(value[:projeto_id].to_i) rescue nil
+      @projeto.responsaveis << user if user
     end
-
 
     respond_to do |format|
       if @projeto.save
@@ -53,8 +46,6 @@ class ProjetosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /projetos/1
-  # PATCH/PUT /projetos/1.json
   def update
     respond_to do |format|
       if @projeto.update(projeto_params)
@@ -67,8 +58,6 @@ class ProjetosController < ApplicationController
     end
   end
 
-  # DELETE /projetos/1
-  # DELETE /projetos/1.json
   def destroy
     @projeto.destroy
     respond_to do |format|
@@ -88,15 +77,13 @@ class ProjetosController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_projeto
       @projeto = Projeto.find(params[:id])
       checa_organizacao
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def projeto_params
       params.require(:projeto).permit(:nome, :desc, :responsavel,
-                            users_attributes: [:projeto_id])
+                            users_attributes: [:projeto_id, :_destroy])
     end
 end
