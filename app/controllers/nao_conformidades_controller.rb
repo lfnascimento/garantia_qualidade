@@ -84,9 +84,12 @@ class NaoConformidadesController < ApplicationController
 
   def alertar_responsavel
     nc = NaoConformidade.find(params[:nc_id])
-    NaoConformidadeMailer.alertar_responsavel_email(nc.user, nc).deliver
     respond_to do |format|
-      format.html { redirect_to nao_conformidades_url, notice: 'Email enviado.' }
+      if NaoConformidadeMailer.alertar_responsavel_email(nc.user, nc).deliver
+        format.html { redirect_to nao_conformidades_url, notice: 'Email enviado.' }
+      else
+        format.html { redirect_to nao_conformidades_url, notice: 'Problema ao enviar o email de notificação.' }
+      end
     end
   end
 
@@ -107,7 +110,7 @@ class NaoConformidadesController < ApplicationController
     if !params[:aplicacao_id].blank?
       aplicacao = Aplicacao.find(params[:aplicacao_id])
       responsaveis_options = aplicacao.projeto.users.sort_by{ |user| user.nome }
-      @responsaveis_options = responsaveis_options.map { |user| [user.nome, user.id] }
+      @responsaveis_options = responsaveis_options.map { |user| [user.to_s, user.id] }
     else
       @responsaveis_options = [[]]
     end

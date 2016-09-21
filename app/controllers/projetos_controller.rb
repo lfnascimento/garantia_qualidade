@@ -26,14 +26,7 @@ class ProjetosController < ApplicationController
 
   def create
     params = projeto_params
-    users = params["users_attributes"]
-    params.delete("users_attributes")
     @projeto = Projeto.new(params.merge(organizacao: current_user.organizacao))
-
-    users.each do |key, value|
-      user =  User.find(value[:projeto_id].to_i) rescue nil
-      @projeto.responsaveis << user if user
-    end
 
     respond_to do |format|
       if @projeto.save
@@ -83,7 +76,6 @@ class ProjetosController < ApplicationController
     end
 
     def projeto_params
-      params.require(:projeto).permit(:nome, :desc, :responsavel,
-                            users_attributes: [:projeto_id, :_destroy])
+      params.require(:projeto).permit(:nome, :desc, user_ids:  [])
     end
 end

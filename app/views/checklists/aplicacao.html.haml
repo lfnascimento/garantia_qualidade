@@ -11,11 +11,8 @@
   %strong Fase:
   = @checklist.fase
 
-= semantic_form_for(@aplicacao) do |f|
-  = f.inputs do
-    = f.input :projeto, as: :select, :collection => Projeto.find_all_by_organizacao(current_user.organizacao)
-    = f.input :checklist_id, as: :hidden, :input_html => { :value => params[:id] }
-    = f.number_field :prazo, in: 1..30
-  = f.actions do
-    = #submit "Aplicar", class: "btn btn-primary"
-    = f.action :submit, label: "Aplicar", :as => :button, class: "btn btn-primary"
+= simple_form_for(@aplicacao) do |f|
+  = f.input :projeto, as: :select, :collection => Projeto.find_all_by_organizacao(current_user.organizacao)
+  = f.input :checklist_id, as: :hidden, :input_html => { :value => params[:id] }
+  = f.input  :prazo, as: :integer, in: 1..30
+  = f.button :submit, "Aplicar", class: "btn btn-primary"

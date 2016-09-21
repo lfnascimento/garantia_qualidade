@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'simple_form'
+
 gem 'premailer-rails'
 
 gem 'nokogiri'
@@ -10,7 +12,7 @@ gem "spork-rails", "~> 4.0.0"
 
 gem 'devise'
 
-gem 'formtastic', '~> 3.0'
+#gem 'formtastic', '~> 3.0'
 
 gem "haml-rails", "~> 0.9"
 

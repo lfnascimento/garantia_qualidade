@@ -1,13 +1,10 @@
 .nested-fields
-  = f.label :descricao, "Descrição"
-  = f.text_field :descricao
+  = f.input :descricao
 
-  = f.label :produto
-  = f.check_box :produto
+  = f.input :produto, as: :boolean
 
-  = f.label :processo
-  = f.check_box :processo
+  = f.input :processo, as: :boolean
 
-  = f.label :ordem
-  = f.number_field :ordem
+  = f.input :ordem, as: :integer
+
   = link_to_remove_association "-", f, class: "btn-xs btn-danger"

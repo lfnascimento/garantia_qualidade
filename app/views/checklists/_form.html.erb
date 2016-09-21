@@ -1,31 +1,18 @@
-<%= semantic_form_for(@checklist) do |f| %>
-  <% if @checklist.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@checklist.errors.count, "error") %> prohibited this checklist from being saved:</h2>
-
-      <ul>
-      <% @checklist.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= simple_form_for(@checklist) do |f| %>
   <div class="field">
-    <%= f.label :identificacao, "Identificação" %><br>
-    <%= f.text_field :identificacao %>
+    <%= f.input :identificacao %>
   </div>
   <div class="field">
-    <%= f.label :fase %><br>
-    <%= f.text_field :fase %>
+    <%= f.input :fase %>
   </div>
+
   <div id="item">
-    <%= f.semantic_fields_for :itens do |item|%>
+    <%= f.simple_fields_for :itens do |item|%>
       <%= render 'item_fields', f: item %>
-      <%= link_to_add_association '+', f, :itens, class: "btn-xs btn-success" %>
     <% end %>
   </div>
   <div class="actions">
-  <%= f.submit "Definir", class: "btn btn-primary" %>
+  <%= f.button :submit, "Definir", class: "btn btn-primary" %>
+  <%= link_to_add_association '+', f, :itens, class: "btn-xs btn-success" %>
   </div>
 <% end %>

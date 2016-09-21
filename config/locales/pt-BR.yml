@@ -1,4 +1,10 @@
 pt-BR:
+  simple_form:
+    labels:
+      projeto:
+        nome: Nome
+        desc: Descrição
+        users: Responsáveis
   date:
     abbr_day_names:
     - Dom

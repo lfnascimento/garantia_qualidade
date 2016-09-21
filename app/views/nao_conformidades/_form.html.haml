@@ -1,12 +1,11 @@
-= semantic_form_for @nao_conformidade do |f|
-  = f.inputs do
-    = f.input :descricao, size: "6"
-    = f.input :origem, size: "6"
-    = label_tag 'aplicacao_id', "Checklist Aplicada"
-    = f.collection_select :aplicacao_id, @aplicacoes, :id, :checklist, { include_blank: "Escolha a Checklist" }
-    = label_tag  'item_id', "Item"
-    = f.collection_select :item_id, (@nao_conformidade.checklist.itens rescue []), :id, :descricao
-    = label_tag  'user_id', "Responsável"
-    = f.collection_select :user_id, (if @nao_conformidade.user;[@nao_conformidade.user];else [];end), :id, :nome
-    = f.input :prazo
-    = f.action :submit, :as => :input, :label => "Registrar"
+= simple_form_for @nao_conformidade do |f|
+  = f.input :descricao, size: "6"
+  = f.input :origem, size: "6"
+  = label_tag 'aplicacao_id', "Checklist Aplicada"
+  = f.collection_select :aplicacao_id, @aplicacoes, :id, :checklist, { include_blank: "Escolha a Checklist" }
+  = label_tag  'item_id', "Item"
+  = f.collection_select :item_id, (@nao_conformidade.checklist.itens rescue []), :id, :descricao
+  = label_tag  'user_id', "Responsável"
+  = f.collection_select :user_id, (if @nao_conformidade.user;[@nao_conformidade.user];else [];end), :id, :nome
+  = f.input :prazo
+  = f.button :submit, 'Registrar'
