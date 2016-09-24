@@ -4,8 +4,8 @@
 
 
 .navbar-inverse {
-  background-color: #0B6951;
-  border-color: #090909;
+  background-color: #004d40 ;
+  border-color: #26a69a;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -13,6 +13,18 @@
 }
 .navbar-inverse .navbar-brand {
   color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  background-color: #26a69a;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, a:active {
+  background-color: #26a69a;
+}
+
+select {
+  color: #0091ea;
 }
 
 .navbar-brand {
@@ -25,7 +37,13 @@
 
 h1, h2,  .h1 {
   font-size: 36px;
-  color: #8d4007;
+  color: #26a69a;
+}
+
+.btn-default {
+    color: #fff;
+    background-color: #0091ea;
+    border: none;
 }
 
 .label {
@@ -39,6 +57,10 @@ h1, h2,  .h1 {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
+}
+
+table td {
+  color: #424242;
 }
 
 ul, ol {

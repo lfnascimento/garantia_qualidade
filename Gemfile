@@ -20,13 +20,15 @@ gem 'haml'
 
 gem 'cocoon'
 
-gem 'bootstrap-generators', '~> 3.3.4'
+#gem 'bootstrap-generators', '~> 3.3.4'
+gem 'bootstrap-sass', '~> 3.3.5.1'
 
+gem 'compass-rails', '~> 2.0.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

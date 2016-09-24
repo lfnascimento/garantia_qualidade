@@ -36,7 +36,7 @@ class NaoConformidadesController < ApplicationController
 
     respond_to do |format|
       if @nao_conformidade.save
-        format.html { redirect_to @nao_conformidade, notice: 'Nao conformidade was successfully created.' }
+        format.html { redirect_to @nao_conformidade, notice: 'Não Conformidade criada com sucesso.' }
         format.json { render :index, status: :created, location: @nao_conformidade }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class NaoConformidadesController < ApplicationController
   def update
     respond_to do |format|
       if @nao_conformidade.update(nao_conformidade_params)
-        format.html { redirect_to @nao_conformidade, notice: 'Nao conformidade was successfully updated.' }
+        format.html { redirect_to @nao_conformidade, notice: 'Não Conformidade atualizada com sucesso.' }
         format.json { render :index, status: :ok, location: @nao_conformidade }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class NaoConformidadesController < ApplicationController
   def destroy
     @nao_conformidade.destroy
     respond_to do |format|
-      format.html { redirect_to nao_conformidades_url, notice: 'Nao conformidade was successfully destroyed.' }
+      format.html { redirect_to nao_conformidades_url, notice: 'Não Conformidade excluída.' }
       format.json { head :no_content }
     end
   end
@@ -86,7 +86,7 @@ class NaoConformidadesController < ApplicationController
     nc = NaoConformidade.find(params[:nc_id])
     respond_to do |format|
       if NaoConformidadeMailer.alertar_responsavel_email(nc.user, nc).deliver
-        format.html { redirect_to nao_conformidades_url, notice: 'Email enviado.' }
+        format.html { redirect_to nao_conformidades_url, notice: 'Email enviado com sucesso.' }
       else
         format.html { redirect_to nao_conformidades_url, notice: 'Problema ao enviar o email de notificação.' }
       end

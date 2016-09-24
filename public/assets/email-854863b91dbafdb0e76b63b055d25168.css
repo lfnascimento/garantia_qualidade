@@ -1,0 +1,58 @@
+/* line 1, /home/vagrant/code/garantia_qualidade/app/assets/stylesheets/email.css.scss */
+.logo {
+  vertical-align: middle;
+  padding: 5px;
+}
+
+/* line 6, /home/vagrant/code/garantia_qualidade/app/assets/stylesheets/email.css.scss */
+.centered-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 60%;
+  padding: 25px;
+  color: #3f3f3f;
+  font-family: Helvetica;
+  font-size: 1em;
+}
+
+/* line 16, /home/vagrant/code/garantia_qualidade/app/assets/stylesheets/email.css.scss */
+.centered-wrapper:before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* line 24, /home/vagrant/code/garantia_qualidade/app/assets/stylesheets/email.css.scss */
+.centered-content {
+  vertical-align: middle;
+  background-color: #f3f0f0 none repeat scroll 0% 0%;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* line 31, /home/vagrant/code/garantia_qualidade/app/assets/stylesheets/email.css.scss */
+footer {
+  font-family: "Arial Black";
+  font-size: 0.7em;
+  border-top: 1px solid #d4d4d4;
+  color: #4a4a4a;
+  text-align: center;
+  margin-top: 1em;
+}
+/* line 37, /home/vagrant/code/garantia_qualidade/app/assets/stylesheets/email.css.scss */
+footer a {
+  text-decoration: none;
+  color: #4a4a4a;
+}
+
+/* line 44, /home/vagrant/code/garantia_qualidade/app/assets/stylesheets/email.css.scss */
+.nao-conformidade {
+  background-color: #fb8d8d none repeat scroll 0% 0%;
+  padding: 1em;
+  border-radius: 5px;
+  color: #5d2f23;
+  font-size: 0.8em;
+}
