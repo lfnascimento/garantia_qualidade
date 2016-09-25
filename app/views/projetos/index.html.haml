@@ -11,7 +11,7 @@
     - @projetos.each do |projeto|
       %tr
         %td= projeto.nome
-        %td= projeto.desc
+        %td= projeto.desc.truncate(50, separator: /\s/) rescue ''
         %td= projeto.responsavel
         %td= link_to 'Visualizar', projeto
         %td= link_to 'Editar', edit_projeto_path(projeto)

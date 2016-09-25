@@ -17,9 +17,9 @@
       - @nao_conformidades.each do |nao_conformidade|
         - class_row = Date.today > nao_conformidade.prazo_data.to_date ? 'warning' : ''
         %tr{class: class_row}
-          %td= nao_conformidade.descricao
+          %td= nao_conformidade.descricao.truncate(15, separator: /\s/)
           %td= nao_conformidade.aplicacao
-          %td= nao_conformidade.item
+          %td= nao_conformidade.item.to_s.truncate(15, separator: /\s/)
           %td
             = select_tag "nao_conformidades[#{nao_conformidade.id}][status]", options_for_select((current_user.avaliado? ? %w[Aberta Resolvendo Finalizada] : %w[Aberta Resolvendo Finalizada Concluída]), nao_conformidade.status)
           %td= nao_conformidade.created_at.strftime("%d/%m/%Y")

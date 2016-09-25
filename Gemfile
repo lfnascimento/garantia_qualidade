@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
+
 gem 'simple_form'
 
 gem 'premailer-rails'
@@ -11,8 +14,6 @@ gem "cancancan", "~> 1.10"
 gem "spork-rails", "~> 4.0.0"
 
 gem 'devise'
-
-#gem 'formtastic', '~> 3.0'
 
 gem "haml-rails", "~> 0.9"
 

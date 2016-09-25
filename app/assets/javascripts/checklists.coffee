@@ -2,4 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org
 
+#$(document).ready ->
+#  $('.form_datetime').datetimepicker();
+    #{
+    #autoclose: true,
+    #todayBtn: true,
+    #pickerPosition: "bottom-left",
+    #format: 'dd-mm-yyyy hh:ii'###
+  #}
+  #);
 
