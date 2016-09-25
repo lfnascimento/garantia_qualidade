@@ -5,6 +5,10 @@ class Checklist < ActiveRecord::Base
   has_many :projetos, through: :aplicacoes
   belongs_to :organizacao
 
+  validates :identificacao, :fase, presence: true
+  validates :identificacao, length: {maximum: 50}
+  validates :fase, length: {maximum: 20}
+
   def to_s
     "#{self.identificacao} - #{self.fase}"
   end

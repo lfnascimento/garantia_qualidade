@@ -4,6 +4,8 @@ class Aplicacao < ActiveRecord::Base
   has_many :respostas
   has_many :nao_conformidades
 
+  validates :projeto, :checklist, :prazo, presence: true
+
   def self.find_all_by_organizacao(id)
     self.joins(checklist: :organizacao).where("organizacoes.id = ?", id)
   end

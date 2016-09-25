@@ -6,6 +6,8 @@ class NaoConformidade < ActiveRecord::Base
 
   alias_attribute :responsavel, :user
 
+  validates :descricao, :item, :aplicacao, :user, :checklist, :prazo, presence: true
+
   def prazo_data
     data = created_at + prazo.days
     data.strftime("%d/%m/%Y")

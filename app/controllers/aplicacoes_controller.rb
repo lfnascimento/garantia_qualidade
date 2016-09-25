@@ -1,14 +1,20 @@
 class AplicacoesController < ApplicationController
 
   def create
+    p80 aplicacao_params
+    aplicacao_params.merge!("prazo" => aplicacao_params["prazo"].to_i)
     @aplicacao = Aplicacao.new(aplicacao_params)
+    p80 @aplicacao.checklist
+    p80 @aplicacao.projeto
+    p80 @aplicacao.prazo
 
     respond_to do |format|
       if @aplicacao.save
         format.html { redirect_to @aplicacao, notice: 'Checklist aplicada com sucesso.' }
         format.json { render :index, status: :created, location: @aplicacao }
       else
-        format.html { render :new }
+        flash[:error] = "Não foi possível aplicar a Checklist. Por favor, verifique se não deixou algum campo em branco"
+        format.html { redirect_to :back }
         format.json { render json: @aplicacao.errors, status: :unprocessable_entity }
       end
     end

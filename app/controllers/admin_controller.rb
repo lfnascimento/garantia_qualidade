@@ -11,10 +11,10 @@ class AdminController < ApplicationController
       params[:user].each do |id, value|
         user = User.find(id)
         if user.organizacao == current_user.organizacao
-          user.papel = params[:user][id][:papel]
-          user.avaliado = params[:user][id][:avaliado] ? true : false
-          @users << user
-          user.save
+          papel = params[:user][id][:papel]
+          avaliado = params[:user][id][:avaliado] ? true : false
+          @users << user if user.update_attributes(papel: papel, avaliado: avaliado)
+
         else
           ActiveRecord::Rollback
           flash[:notice] = "Ação não permitida!"

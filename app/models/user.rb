@@ -4,10 +4,14 @@ class User < ActiveRecord::Base
   belongs_to :projeto
   belongs_to :organizacao
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   validate :checar_qa_e_avaliado
+  validates :nome, presence: true
+  # validates :email, format: {with: VALID_EMAIL_REGEX}
 
   def sepg?
     self.papel == "SEPG"
