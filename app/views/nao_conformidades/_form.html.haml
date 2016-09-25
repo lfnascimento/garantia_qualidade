@@ -10,4 +10,4 @@
   = #label_tag  'user_id', "Responsável"
   = f.association :user, collection: (if @nao_conformidade.user;[@nao_conformidade.user];else [];end)
   = f.input :prazo
-  = f.button :submit, 'Registrar'
+  = f.button :submit, 'Registrar', class: "btn btn-default btn-lg btn-block"
