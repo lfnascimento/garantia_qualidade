@@ -73,8 +73,7 @@ class NaoConformidadesController < ApplicationController
     if params[:nao_conformidades]
       params[:nao_conformidades].each do |index, id|
         nc = NaoConformidade.find(index)
-        nc.status = id[:status]
-        nc.save!
+        nc.update_attribute(:status, id[:status])
       end
     end
     respond_to do |format|

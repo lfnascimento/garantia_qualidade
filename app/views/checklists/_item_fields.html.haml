@@ -1,4 +1,4 @@
-.nested-fields
+%div{ class: 'nested-fields list-group-item' }
   = f.input :descricao
 
   = f.input :produto, as: :boolean
@@ -7,4 +7,4 @@
 
   = f.input :ordem, as: :integer
 
-  = link_to_remove_association "-", f, class: "btn-xs btn-danger"
+  = link_to_remove_association image_tag('rubbish-bin.svg', size: '30x30'), f, class: "btn-xs top-right-corner"

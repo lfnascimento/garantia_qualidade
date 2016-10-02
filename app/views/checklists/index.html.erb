@@ -17,7 +17,7 @@
         <td class="col-md-4 col-md-offset-2"><%= checklist.identificacao %></td>
         <td class="col-md-4 col-md-offset-2"><%= checklist.fase %></td>
 
-            <td><%= link_to "Visualizar", checklist, class: "btn btn-primary" %></td>
+            <td><%= link_to "Visualizar", checklist, class: "btn btn-info" %></td>
 
         <% if current_user.sepg? %>
           <td><%= link_to 'Editar', edit_checklist_path(checklist), class: "btn btn-warning" %></td>
@@ -30,6 +30,6 @@
     <% end %>
   </tbody>
 </table>
-  <%= link_to 'Definir Checklist', new_checklist_path, class: "btn-lg btn-success" if current_user.sepg? %>
+  <%= link_to 'Definir Checklist', new_checklist_path, class: "btn btn-default form-control" if current_user.sepg? %>
 </div>
 

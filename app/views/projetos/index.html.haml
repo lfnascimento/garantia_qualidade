@@ -13,9 +13,10 @@
         %td= projeto.nome
         %td= projeto.desc.truncate(50, separator: /\s/) rescue ''
         %td= projeto.responsavel
-        %td= link_to 'Visualizar', projeto
-        %td= link_to 'Editar', edit_projeto_path(projeto)
-        %td= link_to 'Excluir', projeto, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Visualizar', projeto, class: 'btn btn-info'
+        %td= link_to 'Editar', edit_projeto_path(projeto), class: 'btn btn-primary'
+        %td= link_to 'Excluir', projeto, :method => :delete, :data => { :confirm => 'Deseja realmente exlcuir o projeto?' },
+          class: 'btn btn-danger'
 
 %br
 

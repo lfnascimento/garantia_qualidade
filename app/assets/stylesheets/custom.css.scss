@@ -1,11 +1,16 @@
 @import "bootstrap-variables.scss";
 @import "bootstrap-sprockets.scss";
 @import "bootstrap.scss";
+@import "https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab";
 
+body{
+  background-color: #fafafa;
+}
 
 .navbar-inverse {
-  background-color: #004d40 ;
-  border-color: #26a69a;
+  background-color: #009688;
+  letter-spacing: 1px;
+  border-color: #78909c;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -28,28 +33,86 @@ select {
 }
 
 .navbar-brand {
-  float: left;
-  padding: 15px 15px;
-  font-size: 24px;
-  line-height: 20px;
-  height: 50px;
+  margin-left: -15px;
+  letter-spacing: 3px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;
 }
 
 h1, h2,  .h1 {
-  font-size: 36px;
-  color: #26a69a;
+  font-size: 2.9em;
+  color: #78909c;
   text-align: center;
+  font-family: 'Roboto Slab', serif;
+  letter-spacing: 2px;
 }
 
 .btn-default {
     color: #fff;
-    background-color: #0091ea;
-    border: none;
+    background-color: #00b0ff;
+    border-color: #00b0ff;
 }
 
 .btn-default:hover{
-  background-color: #01579b;
+  background-color: #0091ea;
+  border-color: #0091ea;
   color: #fff;
+}
+
+.btn-info {
+  color: #0288d1;
+  background-color: #40c4ff;
+  border-color: #40c4ff;
+}
+
+.btn-info:hover {
+  background-color: #00b0ff;
+  border-color: #00b0ff;
+}
+
+.btn-danger {
+  color: #d32f2f;
+  background-color: #ff8a80;
+  border-color: #ff8a80;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #ff5252;
+  border-color: #ff5252;
+}
+
+.btn-warning {
+  color: #f9a825;
+  background-color: #ffea00;
+  border-color: #ffea00;
+}
+
+.btn-warning:hover {
+  background-color: #ffd600;
+  border-color: #ffd600;
+}
+
+.btn-success {
+  color: #2e7d32;
+  background-color: #00e676;
+  border-color: #00e676;
+}
+
+.btn-success:hover {
+  border-color: #00c853;
+  background-color: #00c853;
+}
+
+.btn-primary {
+  color: #303f9f;
+  background-color: #536dfe;
+  border-color: #536dfe;
+}
+
+.btn-primary:hover {
+  border-color: #3d5afe;
+  background-color: #3d5afe;
 }
 
 .label {
@@ -71,4 +134,12 @@ table td {
 
 ul, ol {
   list-style-type: none;
+}
+
+.top-buffer { margin-top:20px; }
+
+.top-right-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

@@ -1,0 +1,17 @@
+= simple_form_for(@checklist) do |f|
+  .field
+    = f.input :identificacao
+
+  .field
+    = f.input :fase
+
+  #itens
+    %h3 Itens
+    = f.simple_fields_for :itens do |item|
+      = render 'item_fields', f: item
+      .links
+        = link_to_add_association 'Novo Item', f, :itens, class: "btn btn-success form-control"
+
+  %div{ class: "actions top-buffer" }
+    = f.submit "Definir", class: "btn btn-default form-control"
+
