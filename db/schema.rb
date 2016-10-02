@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711025519) do
+ActiveRecord::Schema.define(version: 20161002211141) do
 
   create_table "aplicacoes", force: :cascade do |t|
     t.integer  "projeto_id",     limit: 4
@@ -113,11 +113,11 @@ ActiveRecord::Schema.define(version: 20160711025519) do
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.string   "papel",                  limit: 255
-    t.boolean  "admin",                              default: true,  null: false
+    t.boolean  "admin",                              default: false, null: false
     t.boolean  "avaliado",                           default: false
     t.integer  "projeto_id",             limit: 4
     t.string   "nome",                   limit: 255
-    t.integer  "organizacao_id",         limit: 4,   default: 1
+    t.integer  "organizacao_id",         limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

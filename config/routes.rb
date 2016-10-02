@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :organizacoes
   resources :projetos
   resources :nao_conformidades
-  devise_for :users
+  #devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   resources :checklists do
     member do
       get 'aplicacao'

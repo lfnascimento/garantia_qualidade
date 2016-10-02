@@ -1,6 +1,5 @@
 class OrganizacoesController < ApplicationController
   before_action :set_organizacao, only: [:show, :edit, :update, :destroy]
-
   # GET /organizacoes
   # GET /organizacoes.json
   def index
@@ -28,6 +27,7 @@ class OrganizacoesController < ApplicationController
 
     respond_to do |format|
       if @organizacao.save
+        current_user.update_attributes!(organizacao: @organizacao, admin: true)
         format.html { redirect_to @organizacao, notice: 'Organizacao was successfully created.' }
         format.json { render :show, status: :created, location: @organizacao }
       else
