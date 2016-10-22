@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002211141) do
+ActiveRecord::Schema.define(version: 20161017190811) do
 
   create_table "aplicacoes", force: :cascade do |t|
     t.integer  "projeto_id",     limit: 4
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20161002211141) do
   end
 
   add_index "checklists", ["organizacao_id"], name: "index_checklists_on_organizacao_id", using: :btree
+
+  create_table "invites", force: :cascade do |t|
+    t.string   "email",          limit: 255
+    t.integer  "organizacao_id", limit: 4
+    t.integer  "sender_id",      limit: 4
+    t.integer  "recipient_id",   limit: 4
+    t.string   "token",          limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "itens", force: :cascade do |t|
     t.text     "descricao",    limit: 65535

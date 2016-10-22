@@ -5,6 +5,13 @@ pt-BR:
         nome: Nome
         desc: Descrição
         users: Responsáveis
+      organizacao:
+        nome: Nome
+        descricao: Descrição
+      checklist:
+        identificacao: Identificação
+      item:
+        descricao: Descrição
   date:
     abbr_day_names:
     - Dom

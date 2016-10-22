@@ -18,6 +18,7 @@ class OrganizacoesController < ApplicationController
 
   # GET /organizacoes/1/edit
   def edit
+    @invite = Invite.new
   end
 
   # POST /organizacoes

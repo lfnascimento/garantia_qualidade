@@ -1,0 +1,5 @@
+= simple_form_for @invite, url: invites_path do |f|
+  = f.input :organizacao_id, input_html: { value: current_user.organizacao_id }, as: :hidden
+  = f.input :email
+  = f.button :submit
+
