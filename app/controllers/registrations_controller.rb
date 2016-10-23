@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    resource.organizacao = Invite.find_by_token(params[:invite_token]).organizacao unless params[:invite_token].blank?
+    resource.organizacao = Invite.find_by_token(params[:invite_token]).organizacao rescue nil
     resource.save
     yield resource if block_given?
     if resource.persisted?
