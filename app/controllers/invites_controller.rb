@@ -6,7 +6,7 @@ class InvitesController < ApplicationController
 
     respond_to do |format|
       if @invite.save
-        InviteMailer.new_user_invite(@invite, new_user_registration_path(invite_token: @invite.token)).
+        InviteMailer.new_user_invite(@invite, new_user_registration_url(invite_token: @invite.token)).
           deliver #send the invite data to our mailer to deliver the email
           format.html { redirect_to edit_organizacao_path(params[:invite][:organizacao_id]), notice: 'Email enviado com sucesso.' }
       else

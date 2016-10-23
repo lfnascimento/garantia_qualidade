@@ -30,7 +30,11 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    new_organizacao_path # Or :prefix_to_your_route
+    if resource.organizacao
+      checklists_path
+    else
+      new_organizacao_path # Or :prefix_to_your_route
+    end
   end
 
 end
