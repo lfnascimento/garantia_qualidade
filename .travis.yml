@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+- 2.2.1
+deploy:
+  provider: heroku
+  api_key:
+    secure: cZliV7uG3pgH8iiO9KYUzMlduftN2+nUFkOquEgO9w5gD9Jk965H+tET+eOW9f7tg8fXgk5T5RqNaKPSwvIyLyAnUT7YVCIPdm7E/d1AL2VGSAqNDErL/ZhIB2bvEOyNCXN93k6dV0Buq8X5eQqafpoNbi3/+yvFJ4bF0sAbREWttagVtso4dlFW+DNs/wN8am9Ymre/iYF0vRt3rQChfYa0q220GcrrlfpcEHwY9ScGMQky7EWYYFUZtdwGJnQ8wWsloH9aws/1e/9lCfbTQJNRrDm7114x3XC+/7hgAB67DCHp2Al1OUNUW4iuk6WIcL80Ne1Iqrt8YjPiAf5fFEgN+SfkZcI7I8ppI6yjd2gbff7wc7Bd17EYdUbXStK7JAZ8mFISCirYpKcMshe/JviJEMjn+BLrBec+cBPWaM+1YC7OZIJAsmL3c3OQ82lqdLp4c7UVuCXhzsv4dH41gbIhlYIL2evdNR6/myZkXFMgmXv14UWzr6XzFBpjoGcJf8cPNOwov4pt4hvBZ2PVQr7PQu3PvCm37B8gVjbc1DSnci1qF2UIyyilLkrk1VxjcuJa/4GkAwKawkzr7dqKhQFeTRgvuGf1Ayldza5z0YqodVryOukV6eehWxsxO85GruIF3UkxdWU/iwO7bcbb36vetODbX4vPGgrXfUE5dwo=
+  app: axurance
+  on:
+    repo: lfnascimento/garantia_qualidade
