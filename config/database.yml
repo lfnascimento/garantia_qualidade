@@ -23,6 +23,7 @@
 #production:
 #  <<: *default
 #  database: db/production.sqlite3
+
 development:
   adapter: mysql2
   enconding: utf8
@@ -34,18 +35,8 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+  #reconnect: false
   database: garantia_qualidade_test
-  pool: 5
-  username: root
-  password: root
-
-#production:
-#  adapter: mysql2
-#  encoding: utf8
-#  reconnect: false
-#  database: sample_sqlite3_production
-#  pool: 5
-#  username: root
-#  password:
-#  socket: /tmp/mysql.sock
+  #pool: 5
+  username: travis
+  #password: root
