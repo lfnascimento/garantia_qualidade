@@ -1,3 +1,5 @@
+before_script:
+    - mysql -e 'create database garantia_qualidade_test;'
 language: ruby
 rvm:
   - 2.2.1
