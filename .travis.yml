@@ -8,3 +8,5 @@ deploy:
   app: axurance
   on:
     repo: lfnascimento/garantia_qualidade
+services:
+  - mysql
