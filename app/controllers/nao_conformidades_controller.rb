@@ -9,7 +9,8 @@ class NaoConformidadesController < ApplicationController
   # GET /nao_conformidades.json
   def index
     @nao_conformidades =  NaoConformidade.joins(aplicacao: {checklist: :organizacao}).
-        where("checklists.organizacao_id = ?", current_user.organizacao_id)
+      where("checklists.organizacao_id = ?", current_user.organizacao_id).
+      paginate(page: params[:page], per_page: 8)
     if current_user.avaliado?
       @nao_conformidades = @nao_conformidades.select { |nc| nc.user == current_user }
     end

@@ -1,5 +1,7 @@
 <h1>Checklists</h1>
 
+<%= link_to(raw("<span class='glyphicon glyphicon-plus'></span> Definir Checklist"), new_checklist_path, class: 'btn btn-success') if current_user.sepg? %>
+
 <div>
   <table class="table table-striped">
   <thead>
@@ -11,6 +13,7 @@
   </thead>
 
   <tbody>
+    <%= will_paginate %>
     <% @checklists.each do |checklist| %>
       <tr>
         <td class="col-md-4 col-md-offset-2"><%= checklist.identificacao %></td>
@@ -27,8 +30,8 @@
         <% end %>
       </tr>
     <% end %>
+    <%= will_paginate %>
   </tbody>
 </table>
-  <%= link_to 'Definir Checklist', new_checklist_path, class: "btn btn-default form-control" if current_user.sepg? %>
 </div>
 

@@ -4,7 +4,8 @@ class ProjetosController < ApplicationController
   # GET /projetos
   # GET /projetos.json
   def index
-    @projetos = Projeto.find_all_by_organizacao(current_user.organizacao)
+    @projetos = Projeto.find_all_by_organizacao(current_user.organizacao).
+      paginate(page: params[:page], per_page: 8)
   end
 
   # GET /projetos/1

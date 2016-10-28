@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate', '0.0.10'
+
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
 

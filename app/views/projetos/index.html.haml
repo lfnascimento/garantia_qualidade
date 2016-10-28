@@ -1,5 +1,7 @@
 %h1 Projetos
 
+= link_to(raw("<span class='glyphicon glyphicon-plus'></span> Novo Projeto"), new_projeto_path, class: 'btn btn-success')
+
 %table{:class => "table table-striped"}
   %thead
     %tr
@@ -8,6 +10,7 @@
       %th Responsável
 
   %tbody
+    = will_paginate
     - @projetos.each do |projeto|
       %tr
         %td= projeto.nome
@@ -19,5 +22,3 @@
           class: 'btn btn-danger'
 
 %br
-
-= link_to 'Novo Projeto', new_projeto_path

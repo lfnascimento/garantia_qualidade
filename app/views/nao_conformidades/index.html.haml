@@ -2,7 +2,7 @@
 %span{class: "glyphicons glyphicons-plus-sign" }
 - if current_user.qa?
   %br
-  = link_to 'Registrar Não Conformidade', new_nao_conformidade_path, class: 'btn btn-success'
+  = link_to(raw("<span class='glyphicon glyphicon-plus'></span> Registrar Não Conformidade"), new_nao_conformidade_path, class: 'btn btn-success')
 = form_tag ({ action: :salvar_status }) do
   %table{:class => "table table-striped"}
     %thead
@@ -14,6 +14,7 @@
         %th Data de Registro
         %th Prazo
     %tbody
+      = will_paginate
       - @nao_conformidades.each do |nao_conformidade|
         - class_row = Date.today > nao_conformidade.prazo_data.to_date ? 'warning' : ''
         %tr{class: class_row}
