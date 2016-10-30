@@ -6,7 +6,7 @@ class ChecklistsController < ApplicationController
   # GET /checklists.json
   def index
     @checklists = Checklist.find_all_by_organizacao(current_user.organizacao).
-      paginate(page: params[:page], per_page: 8)
+      paginate(page: params[:page], per_page: 4)
   end
 
   # GET /checklists/1

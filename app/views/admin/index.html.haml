@@ -1,7 +1,7 @@
 %h1 Papéis
-
+= will_paginate @users
 = form_tag '/admin/trocar_papel', remote: true, id: "form_trocar_papel"  do
-  = will_paginate @users
+  = token_tag nil
   %table{:class => "table table-striped"}
     %tr
       %th Usuário
