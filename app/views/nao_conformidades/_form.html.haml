@@ -9,5 +9,5 @@
   = f.association :item, collection: (@nao_conformidade.checklist.itens rescue [])
   = #label_tag  'user_id', "Responsável"
   = f.association :user, collection: (if @nao_conformidade.user;[@nao_conformidade.user];else [];end)
-  = f.input :prazo
+  = f.input :prazo, as: :date_time_picker, input_html: { placeholder: 'Selecione uma data para o prazo máximo de resolução da não conformidade' }
   = f.button :submit, 'Registrar', class: "btn btn-default btn-lg btn-block"

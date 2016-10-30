@@ -1,5 +1,5 @@
 = simple_form_for @organizacao do |f|
   = f.input :nome
   = f.input :descricao
-  = f.input :logo, as: :file
+  = f.input :picture, accept:'image/jpg,image/png,image/gif', as: :file
   = f.button :submit

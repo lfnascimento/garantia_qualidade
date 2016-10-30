@@ -6,7 +6,7 @@
   = @organizacao.descricao
 %p
   %b Logo:
-  = @organizacao.logo
+  = image_tag @organizacao.picture.url if @organizacao.picture?
 
 = link_to 'Edit', edit_organizacao_path(@organizacao)
 \|

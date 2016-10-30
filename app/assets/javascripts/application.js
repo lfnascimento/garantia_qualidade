@@ -20,6 +20,6 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
-$(document).on("page:change"), function(){
+$(document).on("page:change", function(){
     $(".form-datetime > input").datetimepicker();
 });
