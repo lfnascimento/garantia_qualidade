@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030203831) do
+ActiveRecord::Schema.define(version: 20161106041405) do
 
   create_table "aplicacoes", force: :cascade do |t|
     t.integer  "projeto_id",     limit: 4
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20161030203831) do
   add_index "itens", ["checklist_id"], name: "index_itens_on_checklist_id", using: :btree
 
   create_table "nao_conformidades", force: :cascade do |t|
-    t.integer  "checklist_id", limit: 4
     t.integer  "item_id",      limit: 4
     t.text     "descricao",    limit: 65535
     t.text     "origem",       limit: 65535
@@ -71,7 +70,6 @@ ActiveRecord::Schema.define(version: 20161030203831) do
   end
 
   add_index "nao_conformidades", ["aplicacao_id"], name: "index_nao_conformidades_on_aplicacao_id", using: :btree
-  add_index "nao_conformidades", ["checklist_id"], name: "index_nao_conformidades_on_checklist_id", using: :btree
   add_index "nao_conformidades", ["item_id"], name: "index_nao_conformidades_on_item_id", using: :btree
   add_index "nao_conformidades", ["user_id"], name: "index_nao_conformidades_on_user_id", using: :btree
 
@@ -138,7 +136,6 @@ ActiveRecord::Schema.define(version: 20161030203831) do
 
   add_foreign_key "checklists", "organizacoes"
   add_foreign_key "nao_conformidades", "aplicacoes"
-  add_foreign_key "nao_conformidades", "checklists"
   add_foreign_key "nao_conformidades", "itens"
   add_foreign_key "nao_conformidades", "users"
   add_foreign_key "projetos", "organizacoes"

@@ -3,8 +3,6 @@ class NaoConformidadesController < ApplicationController
   before_action :set_aplicacoes, only: [:new, :edit]
   before_action :authenticate_user!
 
-  #layout proc{|c| c.request.xhr? ? false: "application"}
-
   load_and_authorize_resource
 
   # GET /nao_conformidades
@@ -41,7 +39,8 @@ class NaoConformidadesController < ApplicationController
       if @nao_conformidade.save
         format.html { redirect_to @nao_conformidade, notice: 'Não Conformidade criada com sucesso.' }
         format.json { render :index, status: :created, location: @nao_conformidade }
-        format.js   { render action: 'show', status: :created, location: @nao_conformidade }
+        #format.js   { render action: 'show', status: :created, location: @nao_conformidade }
+        format.js {}
       else
         format.html { render :new }
         format.json { render json: @nao_conformidade.errors, status: :unprocessable_entity }

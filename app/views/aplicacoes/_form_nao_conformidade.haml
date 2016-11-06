@@ -5,4 +5,4 @@
   = f.association :item, as: :hidden
   = f.association :user, collection: @aplicacao.projeto.responsaveis
   = f.input :prazo, as: :date_time_picker, input_html: { placeholder: 'Selecione uma data para o prazo máximo de resolução da não conformidade' }
-  = f.button :submit, 'Registrar', class: "btn btn-default btn-lg btn-block"
+  = f.button :submit, 'Registrar', data: { disable_with: "Registrando..."}, class: "btn btn-default btn-lg btn-block"

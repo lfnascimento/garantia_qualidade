@@ -9,9 +9,5 @@
         %h4
           Item
         %p{id:"item_modal_para"}
+        %div{id:'resposta_registrar_nc'}
         = render partial: 'form_nao_conformidade'
-        -#= form_tag '#', remote:true, id:"nao_conformidade_form" do
-        -#  %div{class:"form-group"}
-        -#    = label_tag 'descricao', 'Descrição', class:"form-control-label"
-        -#    = text_area_tag 'descricao', nil, class:"form-control"
-        -#  = button_tag 'Registrar', class:"btn btn-primary"
