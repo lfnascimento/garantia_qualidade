@@ -25,6 +25,7 @@ class AplicacoesController < ApplicationController
     checa_organizacao
     @checklist = @aplicacao.checklist
     @itens = @checklist.itens_ordernados
+    @nao_conformidade = NaoConformidade.new
   end
 
   private

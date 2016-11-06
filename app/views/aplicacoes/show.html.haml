@@ -16,8 +16,8 @@
         %tr
           %th Descrição dos Itens
           %th Tipo
-          %th Sim
-          %th Não
+          %th Conforme
+          %th Não Conforme
       - @itens.each do |item|
         %tr
           %td
@@ -32,6 +32,11 @@
             = radio_button_tag("resposta[item_id][#{item.id}]", false)
           = #slabel_tag("resposta_nao_#{item.id}", "Não")
           = #hidden_field_tag(:item_id, item.id)
+          %td
+            = button_tag "Registrar Não Conformidade", type: "button", class: "btn btn-primary", 'data-toggle'=> "modal",
+            'data-target'=> "#modal_nao_conformidade", 'data-item-descricao'=> item.descricao, 'data-item-id'=> item.id
+
     = submit_tag("Registrar")
+  = render partial: "modal_nao_conformidade"
 
 = link_to 'Voltar', aplicacoes_path

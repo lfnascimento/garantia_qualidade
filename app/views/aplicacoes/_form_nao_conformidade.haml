@@ -1,0 +1,8 @@
+= simple_form_for @nao_conformidade, url:{controller:"nao_conformidades", action:"create"}, remote:true do |f|
+  = f.input :descricao, size: "6"
+  = f.input :origem, size: "6"
+  = f.association :aplicacao, input_html: {value: @aplicacao.id}, as: :hidden
+  = f.association :item, as: :hidden
+  = f.association :user, collection: @aplicacao.projeto.responsaveis
+  = f.input :prazo, as: :date_time_picker, input_html: { placeholder: 'Selecione uma data para o prazo máximo de resolução da não conformidade' }
+  = f.button :submit, 'Registrar', class: "btn btn-default btn-lg btn-block"

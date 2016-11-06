@@ -1,0 +1,17 @@
+%div{ class: "modal fade", id: "modal_nao_conformidade", 'tabindex'=>'-1', role:'dialog', 'aria-labelledby'=>"modal_nao_conformidade_label", 'ari-hidden'=>'true'}
+  %div{ class: "modal-dialog", role:'document'}
+    %div{ class: "modal-content"}
+      %div{ class: "modal-header"}
+        = button_tag(content_tag(:span, raw('&times;'), 'aria-hidden'=>'true'), class:"close", 'data-dismiss'=>'modal', 'aria-label'=>'close')
+        %h3{class:"modal-title", id:"modal_nao_conformidade_label"}
+          Registrar Não Conformidade
+      %div{class:"modal-body"}
+        %h4
+          Item
+        %p{id:"item_modal_para"}
+        = render partial: 'form_nao_conformidade'
+        -#= form_tag '#', remote:true, id:"nao_conformidade_form" do
+        -#  %div{class:"form-group"}
+        -#    = label_tag 'descricao', 'Descrição', class:"form-control-label"
+        -#    = text_area_tag 'descricao', nil, class:"form-control"
+        -#  = button_tag 'Registrar', class:"btn btn-primary"
