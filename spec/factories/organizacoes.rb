@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :organizacao do
-    nome "MyString"
-    descricao "MyText"
-    logo "MyString"
+    nome "Thoughtgrinder"
+    descricao "Thoghtgrinder web development"
+    picture "thoughtgrinder.png"
   end
 end

@@ -38,5 +38,5 @@ test:
   #reconnect: false
   database: garantia_qualidade_test
   #pool: 5
-  username: travis
-  #password: root
+  username: <%= ENV['TRAVIS'] ? 'travis' : 'root' %>
+  password: <%= ENV['TRAVIS'] ? '' : 'root' %>

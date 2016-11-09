@@ -11,7 +11,8 @@ FactoryGirl.define do
    factory :checklist do
     identificacao "CKI565"
     fase "Inicial"
-  
+    organizacao
+
     factory :checklist_com_items do
       transient do
         items_count 5
