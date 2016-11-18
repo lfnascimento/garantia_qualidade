@@ -12,3 +12,6 @@ deploy:
     repo: lfnascimento/garantia_qualidade
 services:
   - mysql
+addons:
+  code_climate:
+    repo_token: 97df418d72d47210d64f850c2ea9ebdada5200e47932a5254a5eb796096aaae5
