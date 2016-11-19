@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :nao_conformidades
   devise_for :users, controllers: { registrations: "registrations" }
   resources :checklists do
-    member do
-      get 'aplicacao'
-    end
+    #member do
+      #get 'aplicacao'
+    #end
+    resources :aplicacoes
   end
 
   resources :aplicacoes do

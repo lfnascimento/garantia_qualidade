@@ -26,7 +26,8 @@
           <td><%= link_to 'Excluir', checklist, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: "btn btn-danger" %></td>
        <% end %>
         <% if current_user.qa? %>
-            <td><%= link_to 'Aplicar', aplicacao_checklist_path(checklist), class: "btn btn-success" %></td>
+            <td><%= link_to 'Aplicar', new_checklist_aplicacao_path(checklist), class: "btn btn-success" %></td>
+            <td><%= link_to 'Histórico de Aplicacções', checklist_aplicacoes_path(checklist), class: "btn btn-success" %></td>
         <% end %>
       </tr>
     <% end %>

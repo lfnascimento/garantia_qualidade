@@ -1,0 +1,34 @@
+<h1>Checklists Aplicadas</h1>
+
+<div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="col-md-2 col-md-offset-1">Projeto</th>
+      <th class="col-md-2 col-md-offset-1">Checklist</th>
+      <th class="col-md-2 col-md-offset-1">Data</th>
+      <th class="col-md-2 col-md-offset-1">Prazo</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <%= will_paginate %>
+    <% @aplicacoes.each do |aplicacao| %>
+        <tr>
+          <td class="col-md-2 col-md-offset-1"><%= aplicacao.projeto %></td>
+          <td class="col-md-2 col-md-offset-1"><%= aplicacao.checklist %></td>
+          <td class="col-md-2 col-md-offset-1"><%= aplicacao.created_at %></td>
+          <td class="col-md-2 col-md-offset-1"><%= aplicacao.prazo %></td>
+
+          <td><%= link_to "Respostas", aplicacao_respostas_path(aplicacao), class: "btn btn-info" %></td>
+
+          <td><%= link_to 'Excluir', aplicacao, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class: "btn btn-danger" %></td>
+
+
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
