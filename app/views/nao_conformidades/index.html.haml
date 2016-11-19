@@ -16,7 +16,7 @@
     %tbody
       = will_paginate
       - @nao_conformidades.each do |nao_conformidade|
-        - class_row = Date.today > nao_conformidade.prazo_data.to_date ? 'warning' : ''
+        - class_row = Date.today > nao_conformidade.prazo.to_date ? 'warning' : ''
         %tr{class: class_row}
           %td= nao_conformidade.descricao.truncate(15, separator: /\s/)
           %td= nao_conformidade.aplicacao
@@ -24,7 +24,7 @@
           %td
             = select_tag "nao_conformidades[#{nao_conformidade.id}][status]", options_for_select((current_user.avaliado? ? %w[Aberta Resolvendo Finalizada] : %w[Aberta Resolvendo Finalizada Concluída]), nao_conformidade.status)
           %td= nao_conformidade.created_at.strftime("%d/%m/%Y")
-          %td= nao_conformidade.prazo_data
+          %td= nao_conformidade.prazo
           - if current_user.qa?
             %td= button_tag 'Alertar Responsável', { autocomplete: 'off', type: 'button', :'data-complete-text' => "Enviando...", onclick: "alertarResponsavel(#{nao_conformidade.user_id}, #{nao_conformidade.id}); $(this).button('complete');", class: 'btn btn-warning'}
           %td= link_to 'Visualizar', nao_conformidade, class: 'btn btn-info'

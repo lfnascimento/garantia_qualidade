@@ -1,12 +1,19 @@
 class AplicacoesController < ApplicationController
+  before_action :set_aplicacao, only: [:edit, :update, :destroy, :show]
+
+  def index
+    @aplicacoes = Aplicacao.find_all_by_organizacao(current_user.organizacao).
+      paginate(page: params[:page], per_page: 4)
+  end
+
+  def new
+    @checklist = Checklist.find(params[:checklist_id])
+    @aplicacao = Aplicacao.new
+  end
 
   def create
-    p80 aplicacao_params
     aplicacao_params.merge!("prazo" => aplicacao_params["prazo"].to_i)
     @aplicacao = Aplicacao.new(aplicacao_params)
-    p80 @aplicacao.checklist
-    p80 @aplicacao.projeto
-    p80 @aplicacao.prazo
 
     respond_to do |format|
       if @aplicacao.save
@@ -21,14 +28,25 @@ class AplicacoesController < ApplicationController
   end
 
   def show
-    @aplicacao = Aplicacao.find(params[:id])
     checa_organizacao
     @checklist = @aplicacao.checklist
     @itens = @checklist.itens_ordernados
     @nao_conformidade = NaoConformidade.new
   end
 
+  def destroy
+    @aplicacao.destroy
+    respond_to do |format|
+      format.html { redirect_to checklist_aplicacoes_url(@aplicacao.checklist), notice: 'Aplicação excluída com sucesso.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
+
+   def set_aplicacao
+     @aplicacao = Aplicacao.find(params[:id])
+   end
 
    def checa_organizacao
     if @aplicacao.checklist.organizacao != current_user.organizacao
@@ -40,8 +58,6 @@ class AplicacoesController < ApplicationController
       end
     end
   end
-
-  private
 
   def aplicacao_params
     params.require(:aplicacao).permit(:prazo, :checklist_id, :projeto_id)

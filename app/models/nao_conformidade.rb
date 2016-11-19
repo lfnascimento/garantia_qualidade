@@ -7,9 +7,4 @@ class NaoConformidade < ActiveRecord::Base
 
   validates :descricao, :item, :aplicacao, :user, :prazo, presence: true
 
-  def prazo_data
-    data = created_at + prazo.days
-    data.strftime("%d/%m/%Y")
-  end
-
 end
