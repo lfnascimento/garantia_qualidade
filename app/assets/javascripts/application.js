@@ -18,7 +18,6 @@
 //= require moment
 //= require moment/pt-br
 //= require bootstrap-datetimepicker
-//= require_self
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
