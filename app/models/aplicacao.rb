@@ -2,7 +2,7 @@ class Aplicacao < ActiveRecord::Base
   belongs_to :projeto
   belongs_to :checklist
   has_many :respostas, dependent: :destroy
-  has_many :nao_conformidades
+  has_many :nao_conformidades, dependent: :destroy
 
   validates :projeto, :checklist, :prazo, presence: true
 
